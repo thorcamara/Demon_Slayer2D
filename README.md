@@ -31,12 +31,13 @@ Se possível, apresente um exemplo visual do projeto, seja gif, imagens ou víde
 
 ## ✔️ Técnicas e tecnologias utilizadas
 
-**Faça uma lista de tecnologias e técnicas utilizadas (a justificativa e descrição são opcionais)**:
+**Godot Engine 3.5**:
 
-- `Funcionalidade 1`: descrição da funcionalidade 1
-- `Funcionalidade 2`: descrição da funcionalidade 2
-  - `Funcionalidade 2a`: descrição da funcionalidade 2a relacionada à funcionalidade 2
-- `Funcionalidade 3`: descrição da funcionalidade 3
+- Combate baseado em habilidades: Implementar mecânicas de combate que explorem as habilidades únicas dos personagens, como técnicas de respiração e habilidades especiais.
+- Inimigos diversos: Apresentar uma ampla variedade de inimigos e demônios, cada um com habilidades e padrões de ataque únicos.
+- Progressão e upgrades: Oferecer um sistema de progressão para os jogadores melhorarem as habilidades e atributos dos personagens à medida que avançam no jogo.
+- Gráficos e animações detalhadas: Utilizar gráficos 2D bem trabalhados e animações fluidas para proporcionar uma experiência visualmente atraente.
+ -Trilha sonora e efeitos sonoros: Apresentar uma trilha sonora cativante que combine com o tema e a atmosfera do anime
 
 ## 📁 Acesso ao projeto
 
