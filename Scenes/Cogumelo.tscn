@@ -1,0 +1,433 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Assets/Inimigos/Mushroom/Run.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Inimigos/Mushroom/Attack2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Inimigos/Mushroom/Take Hit.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Inimigos/Mushroom/Death.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Cogumelo.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Efeitos_sonoros/Inimigos/blood-splash.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Efeitos_sonoros/Inimigos/mordida.wav" type="AudioStream" id=8]
+
+[sub_resource type="Gradient" id=18]
+offsets = PoolRealArray( 0.0497925, 0.456432, 0.838174 )
+colors = PoolColorArray( 0.616699, 0, 0, 1, 0.777989, 0.191419, 0.19802, 1, 1, 0.407843, 0.458824, 1 )
+
+[sub_resource type="GradientTexture" id=21]
+gradient = SubResource( 18 )
+
+[sub_resource type="Curve" id=19]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=22]
+curve = SubResource( 19 )
+
+[sub_resource type="ParticlesMaterial" id=20]
+flag_disable_z = true
+spread = 30.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 150.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -300.0
+scale = 2.0
+scale_curve = SubResource( 22 )
+color_ramp = SubResource( 21 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 12.5, 19 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Atacar"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "hit"
+}, {
+"args": [  ],
+"method": "fim_do_hit"
+}, {
+"args": [  ],
+"method": "correr"
+} ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("Som_mordida")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0.6 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, -26 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Correr"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -23 ), Vector2( 0, -26 ), Vector2( 0, -25 ), Vector2( 0, -23 ), Vector2( 0, -26 ), Vector2( 0, -25 ), Vector2( 0, -23 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Dano"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, -26 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Morte"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, -26 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -23 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 10, 16.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 8, 10 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 8, 12.5 )
+
+[node name="Cogumelo" type="KinematicBody2D" groups=["inimigos"]]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource( 6 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 14, -23 )
+emitting = false
+amount = 12
+lifetime = 0.5
+explosiveness = 0.8
+randomness = 0.1
+process_material = SubResource( 20 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -23 )
+texture = ExtResource( 2 )
+flip_h = true
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, -19 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Correr"
+anims/Atacar = SubResource( 5 )
+anims/Correr = SubResource( 1 )
+anims/Dano = SubResource( 8 )
+anims/Morte = SubResource( 9 )
+anims/RESET = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( -20, -23 )
+enabled = true
+cast_to = Vector2( -30, 0 )
+collision_mask = 8
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2( -15, -2 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 8
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["inimigos"]]
+collision_layer = 64
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+modulate = Color( 0.207843, 0.94902, 0.168627, 1 )
+position = Vector2( 0, -18.5 )
+shape = SubResource( 4 )
+
+[node name="Detector_jogador" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector_jogador"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -23, -22 )
+shape = SubResource( 6 )
+
+[node name="Detector_ataque" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector_ataque"]
+modulate = Color( 0, 0.109804, 1, 1 )
+position = Vector2( -25, -22.5 )
+shape = SubResource( 7 )
+
+[node name="Vida" type="ColorRect" parent="."]
+margin_left = -15.0
+margin_top = -44.0
+margin_right = 15.0
+margin_bottom = -40.0
+color = Color( 0, 0, 0, 0.509804 )
+
+[node name="Barra" type="ColorRect" parent="Vida"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 29.0
+margin_bottom = 3.0
+color = Color( 0.0470588, 0.509804, 0.109804, 1 )
+
+[node name="Som_dano" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Som_mordida" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[connection signal="mudar_status_cogumelo" from="." to="." method="_on_Cogumelo_mudar_status_cogumelo"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="body_entered" from="Detector_jogador" to="." method="_on_Detector_jogador_body_entered"]
+[connection signal="body_entered" from="Detector_ataque" to="." method="_on_Detector_ataque_body_entered"]

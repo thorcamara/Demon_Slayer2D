@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Dragon.wav-3ee8e562f7928c16ca0c222f9c65482f.sample"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Tanjiro/Ataque/Dragon.wav"
+dest_files=[ "res://.import/Dragon.wav-3ee8e562f7928c16ca0c222f9c65482f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

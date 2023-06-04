@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/xDeviruchi-The-Final-of-The-Fantasy.mp3-007d0c34c8785ad506dc6ccf37b9f7f2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Musica/xDeviruchi - 8-bit Fantasy  & Adventure Music (2021)/Mp3/xDeviruchi-The-Final-of-The-Fantasy.mp3"
+dest_files=[ "res://.import/xDeviruchi-The-Final-of-The-Fantasy.mp3-007d0c34c8785ad506dc6ccf37b9f7f2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

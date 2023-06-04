@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/arvore.wav-6bc1fdbe08a3e3300e1b27d4acd4c187.sample"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Outros/arvore.wav"
+dest_files=[ "res://.import/arvore.wav-6bc1fdbe08a3e3300e1b27d4acd4c187.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

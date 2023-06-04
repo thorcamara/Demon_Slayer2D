@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/PressStart2P.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Tela_controles.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Efeitos_sonoros/Interface/COLORALPHA 50 Menu Interface SFX/WAV/MI_SFX 02.wav" type="AudioStream" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxLine" id=3]
+color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[node name="Tela_controles" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
+[node name="Fundo" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 472.0
+margin_bottom = 248.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Info" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 44.0
+margin_right = 428.0
+margin_bottom = 206.0
+custom_fonts/font = SubResource( 1 )
+text = "Controles
+Andar para esquerda -> A
+Andar para direita -> D
+Pular -> Espaco
+Ataque 1 -> Mouse1
+Ataque 2 -> Mouse2
+Habilidade 1 -> Q
+Habilidade 2 -> W
+Habilidade 3 -> E
+Ultimate -> R
+Especial -> V"
+align = 1
+
+[node name="Botao_retornar" type="Button" parent="."]
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 102.0
+margin_bottom = 25.0
+custom_colors/font_color_disabled = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.780392, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "Voltar"
+
+[node name="Som_pressionou" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="pressed" from="Botao_retornar" to="." method="_on_Botao_retornar_pressed"]

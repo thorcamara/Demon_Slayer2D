@@ -1,0 +1,157 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Assets/PressStart2P.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Intro.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Efeitos_sonoros/Interface/intro.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Imagens/Blood-PNG-Isolated-Transparent.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Efeitos_sonoros/Interface/COLORALPHA 50 Menu Interface SFX/WAV/MI_SFX 02.wav" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxLine" id=4]
+color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "Fade"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2, 3.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Intro" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 472.0
+margin_bottom = 248.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Sangue" type="Sprite" parent="."]
+visible = false
+position = Vector2( 360, 144 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="Sangue2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 120, 144 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 140.0
+margin_top = 108.0
+margin_right = 332.0
+margin_bottom = 124.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Demon Slayer"
+
+[node name="Som_intro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Botao_skip" type="Button" parent="."]
+margin_left = 440.0
+margin_top = 264.0
+margin_right = 504.0
+margin_bottom = 284.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "Skip"
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_right = 512.0
+margin_bottom = 288.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Som_pressionou" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Fade"
+anims/Fade = SubResource( 8 )
+anims/RESET = SubResource( 9 )
+
+[connection signal="pressed" from="Botao_skip" to="." method="_on_Botao_skip_pressed"]

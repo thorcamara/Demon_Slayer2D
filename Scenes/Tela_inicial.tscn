@@ -1,0 +1,191 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Assets/PressStart2P.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Tela_inicial.gd" type="Script" id=2]
+[ext_resource path="res://BaseTileMap.tres" type="TileSet" id=3]
+[ext_resource path="res://Assets/BackGround/Midnight/Sky.png" type="Texture" id=4]
+[ext_resource path="res://Assets/BackGround/Midnight/Trees.png" type="Texture" id=5]
+[ext_resource path="res://Assets/BackGround/Midnight/Stars.png" type="Texture" id=6]
+[ext_resource path="res://Objects/Arbusto_curto.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/Arbusto_longo.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/Arvore_direita.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/Arvore_esquerda.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Objects/Pedra_pequena.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Objects/Pedra_grande.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Objects/Grama.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/Efeitos_sonoros/Interface/COLORALPHA 50 Menu Interface SFX/WAV/MI_SFX 02.wav" type="AudioStream" id=14]
+[ext_resource path="res://Assets/Efeitos_sonoros/Musica/xDeviruchi - 8-bit Fantasy  & Adventure Music (2021)/Mp3/xDeviruchi-Mysterious-Dungeon.mp3" type="AudioStream" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[node name="Tela_inicial" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Fundo" type="Node2D" parent="."]
+
+[node name="Ceu" type="Sprite" parent="Fundo"]
+position = Vector2( 256, 144 )
+scale = Vector2( 2, 1.6 )
+texture = ExtResource( 4 )
+
+[node name="Arvores" type="Sprite" parent="Fundo"]
+position = Vector2( 256, 144 )
+scale = Vector2( 2, 1.6 )
+texture = ExtResource( 5 )
+
+[node name="Estrelas" type="Sprite" parent="Fundo"]
+position = Vector2( 256, 103 )
+scale = Vector2( 2, 1.6 )
+texture = ExtResource( 6 )
+
+[node name="Objetos" type="Node2D" parent="."]
+
+[node name="Pedra_grande" parent="Objetos" instance=ExtResource( 12 )]
+position = Vector2( 374, 235 )
+
+[node name="Pedra_pequena" parent="Objetos" instance=ExtResource( 11 )]
+position = Vector2( 122, 237 )
+
+[node name="Arvore_direita" parent="Objetos" instance=ExtResource( 9 )]
+position = Vector2( 339, 209 )
+
+[node name="Arvore_esquerda" parent="Objetos" instance=ExtResource( 10 )]
+position = Vector2( 191, 212 )
+
+[node name="Arbusto_curto" parent="Objetos" instance=ExtResource( 7 )]
+position = Vector2( 150, 233 )
+
+[node name="Arbusto_longo" parent="Objetos" instance=ExtResource( 8 )]
+position = Vector2( 283, 235 )
+
+[node name="Grama" parent="Objetos" instance=ExtResource( 13 )]
+position = Vector2( 15, 238 )
+
+[node name="Grama2" parent="Objetos" instance=ExtResource( 13 )]
+position = Vector2( 46, 238 )
+
+[node name="Grama3" parent="Objetos" instance=ExtResource( 13 )]
+position = Vector2( 88, 126 )
+
+[node name="Grama4" parent="Objetos" instance=ExtResource( 13 )]
+position = Vector2( 218, 238 )
+
+[node name="Grama5" parent="Objetos" instance=ExtResource( 13 )]
+position = Vector2( 249, 238 )
+
+[node name="Grama6" parent="Objetos" instance=ExtResource( 13 )]
+position = Vector2( 317, 238 )
+
+[node name="Grama7" parent="Objetos" instance=ExtResource( 13 )]
+position = Vector2( 408, 158 )
+
+[node name="Grama8" parent="Objetos" instance=ExtResource( 13 )]
+position = Vector2( 449, 238 )
+
+[node name="Grama9" parent="Objetos" instance=ExtResource( 13 )]
+position = Vector2( 484, 238 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -65538, 54, 0, -65537, 54, 0, -131072, 54, 0, -131071, 54, 0, -131070, 54, 0, -131069, 54, 0, -131068, 54, 0, -131067, 54, 0, -131066, 54, 0, -131065, 54, 0, -131064, 54, 0, -131063, 54, 0, -131062, 54, 0, -131061, 54, 0, -131060, 54, 0, -131059, 54, 0, -131058, 54, 0, -131057, 54, 0, -131056, 54, 0, -131055, 54, 0, -131054, 54, 0, -131053, 54, 0, -131052, 54, 0, -131051, 54, 0, -131050, 54, 0, -131049, 54, 0, -131048, 54, 0, -131047, 54, 0, -131046, 54, 0, -131045, 54, 0, -131044, 54, 0, -131043, 54, 0, -131042, 54, 0, -131041, 54, 0, -131040, 54, 0, -131039, 54, 0, -2, 54, 0, -1, 54, 0, -65536, 54, 0, -65535, 54, 0, -65534, 54, 0, -65533, 54, 0, -65532, 54, 0, -65531, 54, 0, -65530, 54, 0, -65529, 54, 0, -65528, 54, 0, -65527, 54, 0, -65526, 54, 0, -65525, 54, 0, -65524, 54, 0, -65523, 54, 0, -65522, 54, 0, -65521, 54, 0, -65520, 54, 0, -65519, 54, 0, -65518, 54, 0, -65517, 54, 0, -65516, 54, 0, -65515, 54, 0, -65514, 54, 0, -65513, 54, 0, -65512, 54, 0, -65511, 54, 0, -65510, 54, 0, -65509, 54, 0, -65508, 54, 0, -65507, 54, 0, -65506, 54, 0, -65505, 54, 0, -65504, 54, 0, -65503, 54, 0, 65534, 54, 0, 65535, 54, 0, 32, 54, 0, 33, 54, 0, 131070, 54, 0, 131071, 54, 0, 65568, 54, 0, 65569, 54, 0, 196606, 54, 0, 196607, 54, 0, 131104, 54, 0, 131105, 54, 0, 262142, 54, 0, 262143, 54, 0, 196640, 54, 0, 196641, 54, 0, 327678, 54, 0, 327679, 54, 0, 262176, 54, 0, 262177, 54, 0, 393214, 54, 0, 393215, 54, 0, 327712, 54, 0, 327713, 54, 0, 458750, 54, 0, 458751, 54, 0, 393248, 54, 0, 393249, 54, 0, 524286, 54, 0, 524287, 54, 0, 458784, 54, 0, 458785, 54, 0, 589822, 54, 0, 589823, 54, 0, 524292, 0, 0, 524293, 1, 0, 524294, 2, 0, 524320, 54, 0, 524321, 54, 0, 655358, 54, 0, 655359, 54, 0, 589828, 3, 0, 589829, 4, 0, 589830, 5, 0, 589856, 54, 0, 589857, 54, 0, 720894, 54, 0, 720895, 54, 0, 655364, 3, 0, 655365, 4, 0, 655366, 5, 0, 655384, 0, 0, 655385, 1, 0, 655386, 2, 0, 655392, 54, 0, 655393, 54, 0, 786430, 54, 0, 786431, 54, 0, 720900, 3, 0, 720901, 4, 0, 720902, 5, 0, 720920, 3, 0, 720921, 4, 0, 720922, 5, 0, 720928, 54, 0, 720929, 54, 0, 851966, 54, 0, 851967, 54, 0, 786436, 3, 0, 786437, 4, 0, 786438, 5, 0, 786456, 3, 0, 786457, 4, 0, 786458, 5, 0, 786464, 54, 0, 786465, 54, 0, 917502, 54, 0, 917503, 54, 0, 851972, 3, 0, 851973, 4, 0, 851974, 5, 0, 851992, 3, 0, 851993, 4, 0, 851994, 5, 0, 852000, 54, 0, 852001, 54, 0, 983038, 54, 0, 983039, 54, 0, 917508, 3, 0, 917509, 4, 0, 917510, 5, 0, 917528, 3, 0, 917529, 4, 0, 917530, 5, 0, 917536, 54, 0, 917537, 54, 0, 1048574, 54, 0, 1048575, 54, 0, 983040, 1, 0, 983041, 1, 0, 983042, 1, 0, 983043, 1, 0, 983044, 1, 0, 983045, 1, 0, 983046, 1, 0, 983047, 1, 0, 983048, 1, 0, 983049, 1, 0, 983050, 1, 0, 983051, 1, 0, 983052, 1, 0, 983053, 1, 0, 983054, 1, 0, 983055, 1, 0, 983056, 1, 0, 983057, 1, 0, 983058, 1, 0, 983059, 1, 0, 983060, 1, 0, 983061, 1, 0, 983062, 1, 0, 983063, 1, 0, 983064, 1, 0, 983065, 1, 0, 983066, 1, 0, 983067, 1, 0, 983068, 1, 0, 983069, 1, 0, 983070, 1, 0, 983071, 1, 0, 983072, 54, 0, 983073, 54, 0, 1114110, 54, 0, 1114111, 54, 0, 1048576, 4, 0, 1048577, 4, 0, 1048578, 4, 0, 1048579, 4, 0, 1048580, 4, 0, 1048581, 4, 0, 1048582, 4, 0, 1048583, 4, 0, 1048584, 4, 0, 1048585, 4, 0, 1048586, 4, 0, 1048587, 4, 0, 1048588, 4, 0, 1048589, 4, 0, 1048590, 4, 0, 1048591, 4, 0, 1048592, 4, 0, 1048593, 4, 0, 1048594, 4, 0, 1048595, 4, 0, 1048596, 4, 0, 1048597, 4, 0, 1048598, 4, 0, 1048599, 4, 0, 1048600, 4, 0, 1048601, 4, 0, 1048602, 4, 0, 1048603, 4, 0, 1048604, 4, 0, 1048605, 4, 0, 1048606, 4, 0, 1048607, 4, 0, 1048608, 54, 0, 1048609, 54, 0, 1179646, 54, 0, 1179647, 54, 0, 1114112, 4, 0, 1114113, 4, 0, 1114114, 4, 0, 1114115, 4, 0, 1114116, 4, 0, 1114117, 4, 0, 1114118, 4, 0, 1114119, 4, 0, 1114120, 4, 0, 1114121, 4, 0, 1114122, 4, 0, 1114123, 4, 0, 1114124, 4, 0, 1114125, 4, 0, 1114126, 4, 0, 1114127, 4, 0, 1114128, 4, 0, 1114129, 4, 0, 1114130, 4, 0, 1114131, 4, 0, 1114132, 4, 0, 1114133, 4, 0, 1114134, 4, 0, 1114135, 4, 0, 1114136, 4, 0, 1114137, 4, 0, 1114138, 4, 0, 1114139, 4, 0, 1114140, 4, 0, 1114141, 4, 0, 1114142, 4, 0, 1114143, 4, 0, 1114144, 54, 0, 1114145, 54, 0, 1245182, 54, 0, 1245183, 54, 0, 1179648, 54, 0, 1179649, 54, 0, 1179650, 54, 0, 1179651, 54, 0, 1179652, 54, 0, 1179653, 54, 0, 1179654, 54, 0, 1179655, 54, 0, 1179656, 54, 0, 1179657, 54, 0, 1179658, 54, 0, 1179659, 54, 0, 1179660, 54, 0, 1179661, 54, 0, 1179662, 54, 0, 1179663, 54, 0, 1179664, 54, 0, 1179665, 54, 0, 1179666, 54, 0, 1179667, 54, 0, 1179668, 54, 0, 1179669, 54, 0, 1179670, 54, 0, 1179671, 54, 0, 1179672, 54, 0, 1179673, 54, 0, 1179674, 54, 0, 1179675, 54, 0, 1179676, 54, 0, 1179677, 54, 0, 1179678, 54, 0, 1179679, 54, 0, 1179680, 54, 0, 1179681, 54, 0, 1310718, 54, 0, 1310719, 54, 0, 1245184, 54, 0, 1245185, 54, 0, 1245186, 54, 0, 1245187, 54, 0, 1245188, 54, 0, 1245189, 54, 0, 1245190, 54, 0, 1245191, 54, 0, 1245192, 54, 0, 1245193, 54, 0, 1245194, 54, 0, 1245195, 54, 0, 1245196, 54, 0, 1245197, 54, 0, 1245198, 54, 0, 1245199, 54, 0, 1245200, 54, 0, 1245201, 54, 0, 1245202, 54, 0, 1245203, 54, 0, 1245204, 54, 0, 1245205, 54, 0, 1245206, 54, 0, 1245207, 54, 0, 1245208, 54, 0, 1245209, 54, 0, 1245210, 54, 0, 1245211, 54, 0, 1245212, 54, 0, 1245213, 54, 0, 1245214, 54, 0, 1245215, 54, 0, 1245216, 54, 0, 1245217, 54, 0 )
+
+[node name="Botao_start" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -68.0
+margin_right = 50.0
+margin_bottom = -48.0
+focus_neighbour_top = NodePath("../Botao_quit")
+custom_colors/font_color_disabled = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.780392, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+text = "Start"
+
+[node name="Botao_controles" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -180.0
+margin_right = 80.0
+margin_bottom = -160.0
+custom_colors/font_color_disabled = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.780392, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+text = "Controls"
+
+[node name="Botao_quit" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -146.0
+margin_right = 40.0
+margin_bottom = -126.0
+focus_neighbour_bottom = NodePath("../Botao_start")
+custom_colors/font_color_disabled = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.780392, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+text = "Quit"
+
+[node name="Som_pressionou" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 14 )
+
+[node name="Som_musica" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 15 )
+volume_db = -20.0
+autoplay = true
+
+[connection signal="pressed" from="Botao_start" to="." method="_on_Botao_start_pressed"]
+[connection signal="pressed" from="Botao_controles" to="." method="_on_Botao_controles_pressed"]
+[connection signal="pressed" from="Botao_quit" to="." method="_on_Botao_quit_pressed"]

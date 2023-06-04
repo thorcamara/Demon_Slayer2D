@@ -1,0 +1,4808 @@
+[gd_scene load_steps=59 format=2]
+
+[ext_resource path="res://Assets/Sprite_Sheet_Tanjiro/KI/anim1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprite_Sheet_Tanjiro/Movement/Anim1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprite_Sheet_Tanjiro/Movement/Anim2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprite_Sheet_Tanjiro/Attacks/anim1.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Jogador.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Sprite_Sheet_Tanjiro/Damage/anim1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprite_Sheet_Tanjiro/Habilidade1/anim1.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprite_Sheet_Tanjiro/Habilidade2/anim1.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Efeitos_sonoros/Tanjiro/Ataque/sword.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Efeitos_sonoros/Tanjiro/Ataque/water_splash.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Efeitos_sonoros/Tanjiro/Ataque/water_splash2.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Efeitos_sonoros/Tanjiro/Ataque/sharp-sword-draw-one-shot-sound-fx.wav" type="AudioStream" id=13]
+[ext_resource path="res://Assets/Efeitos_sonoros/Tanjiro/Ataque/water-splash3.wav" type="AudioStream" id=14]
+[ext_resource path="res://Assets/Efeitos_sonoros/Outros/wrong-47985.wav" type="AudioStream" id=15]
+[ext_resource path="res://Assets/Efeitos_sonoros/Tanjiro/hurt.wav" type="AudioStream" id=16]
+[ext_resource path="res://Assets/Efeitos_sonoros/Musica/xDeviruchi - 8-bit Fantasy  & Adventure Music (2021)/Mp3/xDeviruchi-The-Final-of-The-Fantasy.mp3" type="AudioStream" id=17]
+[ext_resource path="res://Assets/Efeitos_sonoros/Musica/xDeviruchi - 8-bit Fantasy  & Adventure Music (2021)/Mp3/xDeviruchi-Decisive-Battle.mp3" type="AudioStream" id=18]
+[ext_resource path="res://Assets/Sprite_Sheet_Tanjiro_Hinokami/Habilidade_1_Hinokami/anim1.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprite_Sheet_Tanjiro_Hinokami/Habilidade_2_Hinokami/anim1.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprite_Sheet_Tanjiro/Ultimate/anim2.png" type="Texture" id=21]
+
+[sub_resource type="Gradient" id=41]
+offsets = PoolRealArray( 0.385892, 0.680498, 0.892116 )
+colors = PoolColorArray( 0.0779076, 0.337024, 0.76709, 1, 0.0524178, 0.647916, 0.958496, 1, 0.0693684, 0.657715, 0.652544, 1 )
+
+[sub_resource type="GradientTexture" id=21]
+gradient = SubResource( 41 )
+
+[sub_resource type="Curve" id=42]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=22]
+curve = SubResource( 42 )
+
+[sub_resource type="ParticlesMaterial" id=45]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 170.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -40.0
+damping = 5.0
+scale = 3.0
+scale_curve = SubResource( 22 )
+color_ramp = SubResource( 21 )
+
+[sub_resource type="ParticlesMaterial" id=46]
+flag_disable_z = true
+spread = 30.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 150.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -40.0
+damping = 5.0
+scale = 3.0
+scale_curve = SubResource( 22 )
+color_ramp = SubResource( 21 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 13.5, 21.3402 )
+
+[sub_resource type="RectangleShape2D" id=36]
+extents = Vector2( 16.2963, 23.2099 )
+
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 11.5, 14.5 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "Atacar1"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 3 ), Vector2( -1.90735e-06, 3 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, 20.25 ), Vector2( 13.5, 18.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1.75 ), Vector2( -6.5, 3.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:shape:extents")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 12.3457, 27.6544 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hitbox_espada/colisao_espada:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 22.217, -2.1764 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 15, 17 ), Vector2( 15, 17 ), Vector2( 13.5, 15 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2, -2 ), Vector2( -2, -2 ), Vector2( -7.5, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "Atacar1_esquerda"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 3 ), Vector2( -1.90735e-06, 3 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, 20.25 ), Vector2( 13.5, 18.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1.75 ), Vector2( 6.5, 3.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:shape:extents")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 12.346, 27.654 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hitbox_espada/colisao_espada:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -22.217, -2.176 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 15, 17 ), Vector2( 15, 17 ), Vector2( 13.5, 15 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ), Vector2( 0, -2 ), Vector2( 5.5, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Atacar2"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:shape:extents")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14, 19.875 ), Vector2( 16, 17.5 ), Vector2( 16, 17.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 2.125 ), Vector2( 7, 4.5 ), Vector2( 7, 4.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.90735e-06, 2 ), Vector2( -1.90735e-06, 3 ), Vector2( -1.90735e-06, 3 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:shape:extents")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 13.3334, 27.6543 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hitbox_espada/colisao_espada:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 38.0194, 1.28037 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14, 16.5 ), Vector2( 14, 16.5 ), Vector2( 16, 14 ), Vector2( 16, 14 ), Vector2( 14.5, 16.5 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -1.5 ), Vector2( 0, -1.5 ), Vector2( 6, 1 ), Vector2( 6, 1 ), Vector2( -0.5, -1.5 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "Atacar2_esquerda"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:shape:extents")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14, 19.875 ), Vector2( 16, 17.5 ), Vector2( 16, 17.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 2.125 ), Vector2( -7, 4.5 ), Vector2( -7, 4.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.90735e-06, 2 ), Vector2( -1.90735e-06, 3 ), Vector2( -1.90735e-06, 3 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:shape:extents")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 13.333, 27.654 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hitbox_espada/colisao_espada:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -38.019, 1.28 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.5, 16.5 ), Vector2( 14.5, 16.5 ), Vector2( 16, 14 ), Vector2( 16, 14 ), Vector2( 14.5, 16.5 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.5, -1.5 ), Vector2( -0.5, -1.5 ), Vector2( -8, 1 ), Vector2( -8, 1 ), Vector2( -0.5, -1.5 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Correr"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:shape:extents")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 17.875, 18.7668 ), Vector2( 16.875, 18 ), Vector2( 15.5, 18.5 ), Vector2( 16.5, 18 ), Vector2( 16.5, 18 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.125, 3.2332 ), Vector2( 0.125, 4 ), Vector2( 3.5, 3.5 ), Vector2( 0.5, 4 ), Vector2( 0.5, 4 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 3 ), Vector2( 0, 4 ), Vector2( 0, 3.5 ), Vector2( 0, 4 ), Vector2( 0, 4 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 18, 15.5 ), Vector2( 17, 14.5 ), Vector2( 15.5, 14.8333 ), Vector2( 16.5, 14.5 ), Vector2( 16.5, 14.5 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -0.5 ), Vector2( -1, 0.5 ), Vector2( 2.5, 0.166666 ), Vector2( -0.5, 0.5 ), Vector2( -0.5, 0.5 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "Correr_esquerda"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:shape:extents")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 18, 18.7668 ), Vector2( 16.875, 18 ), Vector2( 15.5, 18.5 ), Vector2( 17, 18 ), Vector2( 17, 18 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 3.2332 ), Vector2( 0.125, 4 ), Vector2( -3.5, 3.5 ), Vector2( -1, 4 ), Vector2( -1, 4 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 3 ), Vector2( 0, 4 ), Vector2( 0, 3.5 ), Vector2( 0, 4 ), Vector2( 0, 4 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 18, 15.5 ), Vector2( 17, 14.5 ), Vector2( 15.5, 14.8333 ), Vector2( 17, 14.5 ), Vector2( 17, 14.5 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2, -0.5 ), Vector2( -1, 0.5 ), Vector2( -4.5, 0.166666 ), Vector2( -2, 0.5 ), Vector2( -2, 0.5 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Dano"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 3 ), Vector2( 0, 3 ), Vector2( 0, 3 ), Vector2( 0, 3 ), Vector2( 0, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14, 20 ), Vector2( 14, 20 ), Vector2( 17, 18.5 ), Vector2( 17, 18.5 ), Vector2( 16.5, 18 ), Vector2( 16.5, 18 ), Vector2( 14, 20 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3, 2 ), Vector2( 3, 2 ), Vector2( -3, 3.5 ), Vector2( -3, 3.5 ), Vector2( 1.5, 4 ), Vector2( 1.5, 4 ), Vector2( 2, 2 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14, 16.5 ), Vector2( 17, 15 ), Vector2( 17, 15 ), Vector2( 16.5, 14.5 ), Vector2( 14, 16.5 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, -1.5 ), Vector2( -4, 0 ), Vector2( -4, 0 ), Vector2( 0.5, 0.5 ), Vector2( 1, -1.5 ) ]
+}
+tracks/10/type = "method"
+tracks/10/path = NodePath(".")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "knockback"
+} ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=40]
+resource_name = "Dano2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 14, 20 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3, 2 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 14, 16.5 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, -1.5 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Sprite:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Habilidade1"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_tiro_hab1"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.5, 20.5 ), Vector2( 16, 17.5 ), Vector2( 16, 17.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.5, 1.5 ), Vector2( 9, 4.5 ), Vector2( 9, 4.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.90735e-06, 2 ), Vector2( -1.90735e-06, 2 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.5, 17 ), Vector2( 14.5, 17 ), Vector2( 16, 14 ), Vector2( 16, 14 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( -0.000760269, 0.4, 0.5, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -2 ), Vector2( -1.5, -2 ), Vector2( 8, 1 ), Vector2( 8, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=47]
+resource_name = "Habilidade1_Hinokami"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 19 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_tiro_hab1_hinokami"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.5, 20.5 ), Vector2( 16, 17.5 ), Vector2( 16, 17.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.5, 1.5 ), Vector2( 9, 4.5 ), Vector2( 9, 4.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 14.5, 1 ), Vector2( 0.999999, 1 ), Vector2( 4.5, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.5, 17 ), Vector2( 14.5, 17 ), Vector2( 16, 14 ), Vector2( 16, 14 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( -0.000760269, 0.4, 0.5, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -2 ), Vector2( -1.5, -2 ), Vector2( 8, 1 ), Vector2( 8, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "Habilidade1_esquerda"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_tiro_hab1"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.5, 20.5 ), Vector2( 16, 17.5 ), Vector2( 16, 17.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.5, 1.5 ), Vector2( -9, 4.5 ), Vector2( -9, 4.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.90735e-06, 2 ), Vector2( -1.90735e-06, 2 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.5, 17 ), Vector2( 16, 14 ), Vector2( 16, 14 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -2 ), Vector2( -10, 1 ), Vector2( -10, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=48]
+resource_name = "Habilidade1_esquerda_Hinokami"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 19 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_tiro_hab1_hinokami"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.5, 20.5 ), Vector2( 16, 17.5 ), Vector2( 16, 17.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.5, 1.5 ), Vector2( -9, 4.5 ), Vector2( -9, 4.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -15, 2 ), Vector2( -1, 1 ), Vector2( -4.5, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.5, 17 ), Vector2( 16, 14 ), Vector2( 16, 14 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -2 ), Vector2( -10, 1 ), Vector2( -10, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=38]
+radius = 53.8167
+height = 0.0
+
+[sub_resource type="Animation" id=13]
+resource_name = "Habilidade2"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 8, 9 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.59, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 360.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("colisao_jogador:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, 20.5 ), Vector2( 16, 20.5 ), Vector2( 14, 23.5 ), Vector2( 14, 23.5 ), Vector2( 13, 23.5 ), Vector2( 18, 23.5 ), Vector2( 19.8571, 22.9286 ), Vector2( 21.7143, 22.3571 ), Vector2( 22.0714, 21 ), Vector2( 23.4286, 18.5 ), Vector2( 21.45, 17.5 ), Vector2( 19.4, 18.5 ), Vector2( 17.35, 19.5 ), Vector2( 17.2286, 20 ), Vector2( 15.75, 20.5 ), Vector2( 14.5, 20 ), Vector2( 12.5, 19.5 ), Vector2( 10, 18.5 ), Vector2( 16.5, 15.5 ), Vector2( 19, 15 ), Vector2( 21, 15 ), Vector2( 22.2083, 14 ), Vector2( 22.5, 13.5 ), Vector2( 22, 13.5 ), Vector2( 21, 15 ), Vector2( 18.8125, 17 ), Vector2( 17.125, 19 ), Vector2( 15.9375, 21.5 ), Vector2( 14.75, 23 ), Vector2( 12.5, 24 ), Vector2( 10.5, 24.5 ), Vector2( 15, 23.5 ), Vector2( 14.5, 22 ), Vector2( 14.5, 22 ), Vector2( 14.5, 20.5 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1.5 ), Vector2( 1, 1.5 ), Vector2( -6, -1.5 ), Vector2( -6, -1.5 ), Vector2( -2, -1.5 ), Vector2( -1, -1.5 ), Vector2( 1.14286, -0.928572 ), Vector2( 3.28571, -0.357143 ), Vector2( 3.92857, 1 ), Vector2( 5.57143, 3.5 ), Vector2( 6.45, 4.5 ), Vector2( 7.4, 3.5 ), Vector2( 8.35, 2.5 ), Vector2( 7.37143, 2 ), Vector2( 7.75, 1.5 ), Vector2( 6.5, 2 ), Vector2( 5.5, 2.5 ), Vector2( 3, 3.5 ), Vector2( 1.5, 6.5 ), Vector2( 2.38419e-07, 7 ), Vector2( -1, 7 ), Vector2( -2.79167, 8 ), Vector2( -4.5, 8.5 ), Vector2( -6, 8.5 ), Vector2( -7, 7 ), Vector2( -7.8125, 5 ), Vector2( -8.125, 3 ), Vector2( -7.9375, 0.5 ), Vector2( -7.75, -1 ), Vector2( -6.5, -2 ), Vector2( -4.5, -2.5 ), Vector2( -2, -1.5 ), Vector2( 1.5, 0 ), Vector2( 1.5, 0 ), Vector2( 5.5, 1.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ), Vector2( -1, 1 ), Vector2( 0.00961155, 0.75 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.488606, -4.646 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, 16 ), Vector2( 16, 16 ), Vector2( 14, 19 ), Vector2( 14, 19 ), Vector2( 13, 18 ), Vector2( 18, 18 ), Vector2( 19.8571, 16.9286 ), Vector2( 21.7143, 15.8571 ), Vector2( 22.0714, 13.5 ), Vector2( 23.3961, 11 ), Vector2( 21.45, 10.75 ), Vector2( 19.4, 13.5 ), Vector2( 17.35, 16.5 ), Vector2( 17.2286, 19.5 ), Vector2( 15.75, 20.0833 ), Vector2( 14.5, 19.6667 ), Vector2( 12.5, 19.25 ), Vector2( 10, 18.3333 ), Vector2( 16.5, 15.5 ), Vector2( 19, 14.6071 ), Vector2( 21, 14.2143 ), Vector2( 22.2083, 12.8214 ), Vector2( 22.5, 11.9286 ), Vector2( 22, 9.5 ), Vector2( 21, 12 ), Vector2( 18.8125, 15 ), Vector2( 17.125, 18 ), Vector2( 15.9375, 20.5 ), Vector2( 14.75, 22 ), Vector2( 12.5, 22.5 ), Vector2( 10.5, 21.6667 ), Vector2( 15, 18 ), Vector2( 14.5, 20 ), Vector2( 14.5, 20 ), Vector2( 14.5, 19 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -3 ), Vector2( 0, -3 ), Vector2( -7, -6 ), Vector2( -7, -6 ), Vector2( -3, -7 ), Vector2( -2, -7 ), Vector2( 0.142857, -6.92857 ), Vector2( 2.28571, -6.85714 ), Vector2( 3, -6.5 ), Vector2( 4.60389, -4 ), Vector2( 5.45, -2.25 ), Vector2( 6.4, -1.5 ), Vector2( 7.35, -0.5 ), Vector2( 6.37143, 1.5 ), Vector2( 6.75, 1.08333 ), Vector2( 5.5, 1.66667 ), Vector2( 4.5, 2.25 ), Vector2( 2, 3.33333 ), Vector2( 0.5, 6.5 ), Vector2( -1, 6.60714 ), Vector2( -2, 6.21428 ), Vector2( -3.79167, 6.82143 ), Vector2( -5.5, 6.92857 ), Vector2( -7, 4.5 ), Vector2( -8, 4 ), Vector2( -8.8125, 3 ), Vector2( -9.125, 2 ), Vector2( -8.9375, -0.5 ), Vector2( -8.75, -2 ), Vector2( -7.5, -3.5 ), Vector2( -5.5, -5.33333 ), Vector2( -3, -7 ), Vector2( 0.5, -2 ), Vector2( 0.5, -2 ), Vector2( 4.5, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 38 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hitbox_espada/colisao_espada:shape:radius")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 53.8167 ]
+}
+
+[sub_resource type="Animation" id=51]
+resource_name = "Habilidade2_Hinokami"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.59, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 360.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("colisao_jogador:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, 20.5 ), Vector2( 16, 20.5 ), Vector2( 14, 23.5 ), Vector2( 14, 23.5 ), Vector2( 13, 23.5 ), Vector2( 18, 23.5 ), Vector2( 19.8571, 22.9286 ), Vector2( 21.7143, 22.3571 ), Vector2( 22.0714, 21 ), Vector2( 23.4286, 18.5 ), Vector2( 21.45, 17.5 ), Vector2( 19.4, 18.5 ), Vector2( 17.35, 19.5 ), Vector2( 17.2286, 20 ), Vector2( 15.75, 20.5 ), Vector2( 14.5, 20 ), Vector2( 12.5, 19.5 ), Vector2( 10, 18.5 ), Vector2( 16.5, 15.5 ), Vector2( 19, 15 ), Vector2( 21, 15 ), Vector2( 22.2083, 14 ), Vector2( 22.5, 13.5 ), Vector2( 22, 13.5 ), Vector2( 21, 15 ), Vector2( 18.8125, 17 ), Vector2( 17.125, 19 ), Vector2( 15.9375, 21.5 ), Vector2( 14.75, 23 ), Vector2( 12.5, 24 ), Vector2( 10.5, 24.5 ), Vector2( 15, 23.5 ), Vector2( 14.5, 22 ), Vector2( 14.5, 22 ), Vector2( 14.5, 20.5 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1.5 ), Vector2( 1, 1.5 ), Vector2( -6, -1.5 ), Vector2( -6, -1.5 ), Vector2( -2, -1.5 ), Vector2( -1, -1.5 ), Vector2( 1.14286, -0.928572 ), Vector2( 3.28571, -0.357143 ), Vector2( 3.92857, 1 ), Vector2( 5.57143, 3.5 ), Vector2( 6.45, 4.5 ), Vector2( 7.4, 3.5 ), Vector2( 8.35, 2.5 ), Vector2( 7.37143, 2 ), Vector2( 7.75, 1.5 ), Vector2( 6.5, 2 ), Vector2( 5.5, 2.5 ), Vector2( 3, 3.5 ), Vector2( 1.5, 6.5 ), Vector2( 2.38419e-07, 7 ), Vector2( -1, 7 ), Vector2( -2.79167, 8 ), Vector2( -4.5, 8.5 ), Vector2( -6, 8.5 ), Vector2( -7, 7 ), Vector2( -7.8125, 5 ), Vector2( -8.125, 3 ), Vector2( -7.9375, 0.5 ), Vector2( -7.75, -1 ), Vector2( -6.5, -2 ), Vector2( -4.5, -2.5 ), Vector2( -2, -1.5 ), Vector2( 1.5, 0 ), Vector2( 1.5, 0 ), Vector2( 5.5, 1.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ), Vector2( -1, 1 ), Vector2( 0.00961155, 0.75 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.488606, -4.646 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, 16 ), Vector2( 16, 16 ), Vector2( 14, 19 ), Vector2( 14, 19 ), Vector2( 13, 18 ), Vector2( 18, 18 ), Vector2( 19.8571, 16.9286 ), Vector2( 21.7143, 15.8571 ), Vector2( 22.0714, 13.5 ), Vector2( 23.3961, 11 ), Vector2( 21.45, 10.75 ), Vector2( 19.4, 13.5 ), Vector2( 17.35, 16.5 ), Vector2( 17.2286, 19.5 ), Vector2( 15.75, 20.0833 ), Vector2( 14.5, 19.6667 ), Vector2( 12.5, 19.25 ), Vector2( 10, 18.3333 ), Vector2( 16.5, 15.5 ), Vector2( 19, 14.6071 ), Vector2( 21, 14.2143 ), Vector2( 22.2083, 12.8214 ), Vector2( 22.5, 11.9286 ), Vector2( 22, 9.5 ), Vector2( 21, 12 ), Vector2( 18.8125, 15 ), Vector2( 17.125, 18 ), Vector2( 15.9375, 20.5 ), Vector2( 14.75, 22 ), Vector2( 12.5, 22.5 ), Vector2( 10.5, 21.6667 ), Vector2( 15, 18 ), Vector2( 14.5, 20 ), Vector2( 14.5, 20 ), Vector2( 14.5, 19 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -3 ), Vector2( 0, -3 ), Vector2( -7, -6 ), Vector2( -7, -6 ), Vector2( -3, -7 ), Vector2( -2, -7 ), Vector2( 0.142857, -6.92857 ), Vector2( 2.28571, -6.85714 ), Vector2( 3, -6.5 ), Vector2( 4.60389, -4 ), Vector2( 5.45, -2.25 ), Vector2( 6.4, -1.5 ), Vector2( 7.35, -0.5 ), Vector2( 6.37143, 1.5 ), Vector2( 6.75, 1.08333 ), Vector2( 5.5, 1.66667 ), Vector2( 4.5, 2.25 ), Vector2( 2, 3.33333 ), Vector2( 0.5, 6.5 ), Vector2( -1, 6.60714 ), Vector2( -2, 6.21428 ), Vector2( -3.79167, 6.82143 ), Vector2( -5.5, 6.92857 ), Vector2( -7, 4.5 ), Vector2( -8, 4 ), Vector2( -8.8125, 3 ), Vector2( -9.125, 2 ), Vector2( -8.9375, -0.5 ), Vector2( -8.75, -2 ), Vector2( -7.5, -3.5 ), Vector2( -5.5, -5.33333 ), Vector2( -3, -7 ), Vector2( 0.5, -2 ), Vector2( 0.5, -2 ), Vector2( 4.5, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 38 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hitbox_espada/colisao_espada:shape:radius")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 53.8167 ]
+}
+
+[sub_resource type="Animation" id=39]
+resource_name = "Habilidade2_esquerda"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 8, 9 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.59, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -360.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("colisao_jogador:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, 20.5 ), Vector2( 16, 20.5 ), Vector2( 14, 23.5 ), Vector2( 14, 23.5 ), Vector2( 13, 23.5 ), Vector2( 16, 23.5 ), Vector2( 18.5, 22.9286 ), Vector2( 20, 21 ), Vector2( 20.5, 20 ), Vector2( 20.5, 18 ), Vector2( 19.5, 17 ), Vector2( 18, 18 ), Vector2( 17, 19 ), Vector2( 15, 20 ), Vector2( 14, 19.5 ), Vector2( 12, 19.5 ), Vector2( 10, 19 ), Vector2( 9, 18 ), Vector2( 15, 15.5 ), Vector2( 17, 14.5 ), Vector2( 19, 14.5 ), Vector2( 20.5, 13.5 ), Vector2( 21, 13.5 ), Vector2( 20.5, 13.5 ), Vector2( 19, 15 ), Vector2( 17, 17 ), Vector2( 16, 19 ), Vector2( 15, 20.5 ), Vector2( 13, 22 ), Vector2( 11.5, 23 ), Vector2( 9.5, 23.5 ), Vector2( 13, 23.5 ), Vector2( 13, 21 ), Vector2( 13, 21 ), Vector2( 13, 20 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3, 1.5 ), Vector2( -3, 1.5 ), Vector2( 6, -1.5 ), Vector2( 6, -1.5 ), Vector2( 2, -1.5 ), Vector2( 1, -1.5 ), Vector2( -0.5, -0.928572 ), Vector2( -1, 1 ), Vector2( -3.5, 2 ), Vector2( -4.5, 4 ), Vector2( -5.5, 5 ), Vector2( -7, 4 ), Vector2( -8, 3 ), Vector2( -8, 2 ), Vector2( -8, 2.5 ), Vector2( -7, 2.5 ), Vector2( -6, 3 ), Vector2( -3, 4 ), Vector2( -1, 6.5 ), Vector2( 2.38419e-07, 7.5 ), Vector2( 1, 7.5 ), Vector2( 2.5, 8.5 ), Vector2( 4, 8.5 ), Vector2( 5.5, 8.5 ), Vector2( 6, 7 ), Vector2( 8, 5 ), Vector2( 8, 3 ), Vector2( 8, 1.5 ), Vector2( 7, 0 ), Vector2( 6.5, -1 ), Vector2( 4.5, -1.5 ), Vector2( 2, -1.5 ), Vector2( -2, 1 ), Vector2( -2, 1 ), Vector2( -5, 2 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ), Vector2( -1, 1 ), Vector2( 0.00961155, 0.75 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.488606, -4.646 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, 16 ), Vector2( 16, 16 ), Vector2( 14, 19 ), Vector2( 14, 19 ), Vector2( 13, 18 ), Vector2( 16, 18 ), Vector2( 18.3571, 16.9286 ), Vector2( 20, 14.5 ), Vector2( 20.5, 12.5 ), Vector2( 20.5, 10.5 ), Vector2( 19.5, 10.25 ), Vector2( 18, 13 ), Vector2( 17, 15.5 ), Vector2( 15, 18.5 ), Vector2( 14, 19.0833 ), Vector2( 12, 19.1667 ), Vector2( 10, 18.75 ), Vector2( 9, 17.8333 ), Vector2( 15, 15.5 ), Vector2( 17, 14.1071 ), Vector2( 19, 13.7143 ), Vector2( 20.5, 12.3214 ), Vector2( 21, 11.9286 ), Vector2( 20.5, 9.5 ), Vector2( 19, 11.5 ), Vector2( 17, 14.5 ), Vector2( 16, 17 ), Vector2( 15, 19 ), Vector2( 13, 20.5 ), Vector2( 11.5, 21 ), Vector2( 9.5, 20.6667 ), Vector2( 13, 18 ), Vector2( 13, 18.5 ), Vector2( 13, 18.5 ), Vector2( 13, 18.5 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4, -3 ), Vector2( -4, -3 ), Vector2( 5, -6 ), Vector2( 5, -6 ), Vector2( 1, -7 ), Vector2( 0, -7 ), Vector2( -1.35714, -6.92857 ), Vector2( -2, -5.5 ), Vector2( -4.5, -5.5 ), Vector2( -5.5, -3.5 ), Vector2( -6.5, -1.75 ), Vector2( -8, -1 ), Vector2( -9, -0.5 ), Vector2( -9, 0.5 ), Vector2( -9, 2.08333 ), Vector2( -8, 2.16667 ), Vector2( -7, 2.75 ), Vector2( -4, 3.83333 ), Vector2( -2, 6.5 ), Vector2( -1, 7.10714 ), Vector2( 4.76837e-07, 6.71428 ), Vector2( 1.5, 7.32143 ), Vector2( 3, 6.92857 ), Vector2( 4.5, 4.5 ), Vector2( 5, 3.5 ), Vector2( 7, 2.5 ), Vector2( 7, 1 ), Vector2( 7, 0 ), Vector2( 6, -1.5 ), Vector2( 5.5, -3 ), Vector2( 3.5, -4.33333 ), Vector2( 1, -7 ), Vector2( -3, -1.5 ), Vector2( -3, -1.5 ), Vector2( -6, 0.5 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 38 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hitbox_espada/colisao_espada:shape:radius")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 53.8167 ]
+}
+
+[sub_resource type="Animation" id=52]
+resource_name = "Habilidade2_esquerda_Hinokami"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.59, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -360.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("colisao_jogador:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, 20.5 ), Vector2( 16, 20.5 ), Vector2( 14, 23.5 ), Vector2( 14, 23.5 ), Vector2( 13, 23.5 ), Vector2( 16, 23.5 ), Vector2( 18.5, 22.9286 ), Vector2( 20, 21 ), Vector2( 20.5, 20 ), Vector2( 20.5, 18 ), Vector2( 19.5, 17 ), Vector2( 18, 18 ), Vector2( 17, 19 ), Vector2( 15, 20 ), Vector2( 14, 19.5 ), Vector2( 12, 19.5 ), Vector2( 10, 19 ), Vector2( 9, 18 ), Vector2( 15, 15.5 ), Vector2( 17, 14.5 ), Vector2( 19, 14.5 ), Vector2( 20.5, 13.5 ), Vector2( 21, 13.5 ), Vector2( 20.5, 13.5 ), Vector2( 19, 15 ), Vector2( 17, 17 ), Vector2( 16, 19 ), Vector2( 15, 20.5 ), Vector2( 13, 22 ), Vector2( 11.5, 23 ), Vector2( 9.5, 23.5 ), Vector2( 13, 23.5 ), Vector2( 13, 21 ), Vector2( 13, 21 ), Vector2( 13, 20 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3, 1.5 ), Vector2( -3, 1.5 ), Vector2( 6, -1.5 ), Vector2( 6, -1.5 ), Vector2( 2, -1.5 ), Vector2( 1, -1.5 ), Vector2( -0.5, -0.928572 ), Vector2( -1, 1 ), Vector2( -3.5, 2 ), Vector2( -4.5, 4 ), Vector2( -5.5, 5 ), Vector2( -7, 4 ), Vector2( -8, 3 ), Vector2( -8, 2 ), Vector2( -8, 2.5 ), Vector2( -7, 2.5 ), Vector2( -6, 3 ), Vector2( -3, 4 ), Vector2( -1, 6.5 ), Vector2( 2.38419e-07, 7.5 ), Vector2( 1, 7.5 ), Vector2( 2.5, 8.5 ), Vector2( 4, 8.5 ), Vector2( 5.5, 8.5 ), Vector2( 6, 7 ), Vector2( 8, 5 ), Vector2( 8, 3 ), Vector2( 8, 1.5 ), Vector2( 7, 0 ), Vector2( 6.5, -1 ), Vector2( 4.5, -1.5 ), Vector2( 2, -1.5 ), Vector2( -2, 1 ), Vector2( -2, 1 ), Vector2( -5, 2 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ), Vector2( -1, 1 ), Vector2( 0.00961155, 0.75 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.488606, -4.646 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, 16 ), Vector2( 16, 16 ), Vector2( 14, 19 ), Vector2( 14, 19 ), Vector2( 13, 18 ), Vector2( 16, 18 ), Vector2( 18.3571, 16.9286 ), Vector2( 20, 14.5 ), Vector2( 20.5, 12.5 ), Vector2( 20.5, 10.5 ), Vector2( 19.5, 10.25 ), Vector2( 18, 13 ), Vector2( 17, 15.5 ), Vector2( 15, 18.5 ), Vector2( 14, 19.0833 ), Vector2( 12, 19.1667 ), Vector2( 10, 18.75 ), Vector2( 9, 17.8333 ), Vector2( 15, 15.5 ), Vector2( 17, 14.1071 ), Vector2( 19, 13.7143 ), Vector2( 20.5, 12.3214 ), Vector2( 21, 11.9286 ), Vector2( 20.5, 9.5 ), Vector2( 19, 11.5 ), Vector2( 17, 14.5 ), Vector2( 16, 17 ), Vector2( 15, 19 ), Vector2( 13, 20.5 ), Vector2( 11.5, 21 ), Vector2( 9.5, 20.6667 ), Vector2( 13, 18 ), Vector2( 13, 18.5 ), Vector2( 13, 18.5 ), Vector2( 13, 18.5 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.19, 0.2, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.59, 0.6, 0.69, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4, -3 ), Vector2( -4, -3 ), Vector2( 5, -6 ), Vector2( 5, -6 ), Vector2( 1, -7 ), Vector2( 0, -7 ), Vector2( -1.35714, -6.92857 ), Vector2( -2, -5.5 ), Vector2( -4.5, -5.5 ), Vector2( -5.5, -3.5 ), Vector2( -6.5, -1.75 ), Vector2( -8, -1 ), Vector2( -9, -0.5 ), Vector2( -9, 0.5 ), Vector2( -9, 2.08333 ), Vector2( -8, 2.16667 ), Vector2( -7, 2.75 ), Vector2( -4, 3.83333 ), Vector2( -2, 6.5 ), Vector2( -1, 7.10714 ), Vector2( 4.76837e-07, 6.71428 ), Vector2( 1.5, 7.32143 ), Vector2( 3, 6.92857 ), Vector2( 4.5, 4.5 ), Vector2( 5, 3.5 ), Vector2( 7, 2.5 ), Vector2( 7, 1 ), Vector2( 7, 0 ), Vector2( 6, -1.5 ), Vector2( 5.5, -3 ), Vector2( 3.5, -4.33333 ), Vector2( 1, -7 ), Vector2( -3, -1.5 ), Vector2( -3, -1.5 ), Vector2( -6, 0.5 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 38 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hitbox_espada/colisao_espada:shape:radius")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 53.8167 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Habilidade3"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_tiro_hab3"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13.5, 20 ), Vector2( 16, 17 ), Vector2( 16, 17 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.5, 2 ), Vector2( 9, 5 ), Vector2( 9, 5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13.5, 16.5 ), Vector2( 16, 13.5 ), Vector2( 16, 13.5 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -1.5 ), Vector2( 8, 1.5 ), Vector2( 8, 1.5 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=49]
+resource_name = "Habilidade3_Hinokami"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 19 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_tiro_hab3_hinokami"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.5, 20.5 ), Vector2( 16, 17.5 ), Vector2( 16, 17.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.5, 1.5 ), Vector2( 9, 4.5 ), Vector2( 9, 4.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 14.5, 1 ), Vector2( 0.999999, 1 ), Vector2( 4.5, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.5, 17 ), Vector2( 14.5, 17 ), Vector2( 16, 14 ), Vector2( 16, 14 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( -0.000760269, 0.4, 0.5, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -2 ), Vector2( -1.5, -2 ), Vector2( 8, 1 ), Vector2( 8, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=33]
+resource_name = "Habilidade3_esquerda"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_tiro_hab3"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13.5, 20 ), Vector2( 16, 17 ), Vector2( 16, 17 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.5, 2 ), Vector2( -9, 5 ), Vector2( -9, 5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13.5, 16.5 ), Vector2( 16, 13.5 ), Vector2( 16, 13.5 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -1.5 ), Vector2( -10, 1.5 ), Vector2( -10, 1.5 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=50]
+resource_name = "Habilidade3_esquerda_Hinokami"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 19 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_tiro_hab3_hinokami"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.5, 20.5 ), Vector2( 16, 17.5 ), Vector2( 16, 17.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.5, 1.5 ), Vector2( -9, 4.5 ), Vector2( -9, 4.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -15, 2 ), Vector2( -1, 1 ), Vector2( -4.5, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.5, 17 ), Vector2( 16, 14 ), Vector2( 16, 14 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -2 ), Vector2( -10, 1 ), Vector2( -10, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Morto"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.8, 0.9, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13, 20 ), Vector2( 13, 20 ), Vector2( 17, 19 ), Vector2( 17, 19 ), Vector2( 15.5, 18.5 ), Vector2( 15.5, 18.5 ), Vector2( 23, 8.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.8, 0.9, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3, 2 ), Vector2( 3, 2 ), Vector2( -3, 3 ), Vector2( -3, 3 ), Vector2( 0.5, 3.5 ), Vector2( 0.5, 3.5 ), Vector2( 0, 13.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Parado"
+length = 2.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 1.1, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 0, 1, 2 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:shape:extents")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 11.5, 20.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -4.5, 1.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Sprite:flip_h")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 11.5, 14.5 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -4.5, -4.5 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=44]
+length = 2.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 1.1, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 0, 1, 2 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:shape:extents")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 11, 20.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 5, 1.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 11.5, 14.5 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4.5, -4.5 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Pular"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:shape:extents")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 17, 20 ), Vector2( 17, 20 ), Vector2( 15.5, 22 ), Vector2( 15.5, 22 ), Vector2( 15.5, 20 ), Vector2( 15.5, 21.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.75, 2 ), Vector2( -0.75, 2 ), Vector2( 2.25, 0 ), Vector2( 2.25, 0 ), Vector2( 2.25, 2 ), Vector2( 2.25, 0.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 17, 15 ), Vector2( 17, 15 ), Vector2( 15.5, 16.8 ), Vector2( 15.5, 16.8 ), Vector2( 15.75, 14.4 ), Vector2( 16, 15.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, -3 ), Vector2( -1, -3 ), Vector2( 2.5, -5.2 ), Vector2( 2.5, -5.2 ), Vector2( 2.25, -3.6 ), Vector2( 2, -5.5 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "Pular_esquerda"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:shape:extents")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 17, 20 ), Vector2( 17, 20 ), Vector2( 15.5, 22 ), Vector2( 15.5, 22 ), Vector2( 15.5, 20 ), Vector2( 15.5, 21.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.25, 2 ), Vector2( 1.25, 2 ), Vector2( -1.75, 0 ), Vector2( -1.75, 0 ), Vector2( -0.75, 2 ), Vector2( -3.75, 0.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 17, 15 ), Vector2( 17, 15 ), Vector2( 15, 17 ), Vector2( 15, 17 ), Vector2( 16, 15 ), Vector2( 15, 17 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, -3 ), Vector2( 1, -3 ), Vector2( -2, -5 ), Vector2( -2, -5 ), Vector2( -1, -3 ), Vector2( -4, -3 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 0.8 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:shape:extents")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 13.5, 21.3402 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("colisao_jogador:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 2 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("colisao_jogador:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Sprite:flip_h")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 11.5, 14.5 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -4.5, -4.5 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox_espada/colisao_espada:shape:extents")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16.2963, 23.2099 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Hitbox_espada/colisao_espada:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 26.1676, -2.17641 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ SubResource( 36 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Hitbox_espada/colisao_espada:shape:radius")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 53.8167 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Sprite:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Som_ataque:stream")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 10 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Ultimate"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 21 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7, 0.75, 0.89, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 37.2, 37.2, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("colisao_jogador:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.09, 0.1, 0.19, 0.2, 0.29, 0.3, 0.39, 0.4, 0.49, 0.5, 0.59, 0.6, 0.69, 0.7, 0.89, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13.5, 20 ), Vector2( 13.5, 20 ), Vector2( 16, 19 ), Vector2( 16, 19 ), Vector2( 16, 20.5 ), Vector2( 16, 20.5 ), Vector2( 15, 25.5 ), Vector2( 15, 25.5 ), Vector2( 14.5, 27.5 ), Vector2( 14.5, 27.5 ), Vector2( 14.5, 28 ), Vector2( 14.5, 28 ), Vector2( 14.5, 28.5 ), Vector2( 14.5, 28.5 ), Vector2( 18.5, 16.5 ), Vector2( 18.5, 16.5 ), Vector2( 15, 16.5 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.09, 0.1, 0.19, 0.2, 0.29, 0.3, 0.39, 0.4, 0.49, 0.5, 0.59, 0.6, 0.69, 0.7, 0.89, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 2 ), Vector2( 0.5, 2 ), Vector2( 5, 3 ), Vector2( 5, 3 ), Vector2( 1, 1.5 ), Vector2( 1, 1.5 ), Vector2( 1, -3.5 ), Vector2( 1, -3.5 ), Vector2( 4.5, -5.5 ), Vector2( 4.5, -5.5 ), Vector2( 7.5, -6 ), Vector2( 7.5, -6 ), Vector2( 8.5, -6.5 ), Vector2( 8.5, -6.5 ), Vector2( -16.5, 5.5 ), Vector2( -16.5, 5.5 ), Vector2( 3, 5.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 24, -12 ), Vector2( 11, -12 ), Vector2( 9, -17 ), Vector2( 23, -19 ), Vector2( 26, -23 ), Vector2( 26, -24 ), Vector2( 24, -24 ), Vector2( 7, 6 ), Vector2( 29, 6 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:shape:extents")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 32.0988, 34.0741 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hitbox_espada/colisao_espada:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 37.0317, -13.0406 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.09, 0.1, 0.19, 0.2, 0.29, 0.3, 0.39, 0.4, 0.49, 0.5, 0.59, 0.6, 0.69, 0.7, 0.89, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13.5, 16.5 ), Vector2( 13.5, 16.5 ), Vector2( 16, 15.5 ), Vector2( 16, 15.5 ), Vector2( 16, 17 ), Vector2( 16, 17 ), Vector2( 15, 22 ), Vector2( 15, 22 ), Vector2( 14.5, 22 ), Vector2( 14.5, 22 ), Vector2( 14.5, 21.5 ), Vector2( 14.5, 21.5 ), Vector2( 14.5, 22 ), Vector2( 14.5, 22 ), Vector2( 18.5, 16.5 ), Vector2( 18.5, 16.5 ), Vector2( 15, 16.5 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.09, 0.1, 0.19, 0.2, 0.29, 0.3, 0.39, 0.399684, 0.49, 0.5, 0.59, 0.6, 0.69, 0.699729, 0.89, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.5, -1.5 ), Vector2( -0.5, -1.5 ), Vector2( 4, -0.5 ), Vector2( 4, -0.5 ), Vector2( 0, -2 ), Vector2( 0, -2 ), Vector2( 0, -7 ), Vector2( 0, -7 ), Vector2( 3.5, -11 ), Vector2( 3.5, -11 ), Vector2( 6.5, -12.5 ), Vector2( 6.5, -12.5 ), Vector2( 7.5, -13 ), Vector2( 7.5, -13 ), Vector2( -17.5, 5.5 ), Vector2( -17.5, 5.5 ), Vector2( 2, 5.5 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[sub_resource type="Animation" id=37]
+resource_name = "Ultimate_esquerda"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 21 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7, 0.75, 0.89, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -37.2, -37.2, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("colisao_jogador:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.09, 0.1, 0.19, 0.2, 0.29, 0.3, 0.39, 0.4, 0.49, 0.5, 0.59, 0.6, 0.69, 0.7, 0.89, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13.5, 20 ), Vector2( 13.5, 20 ), Vector2( 16, 19 ), Vector2( 16, 19 ), Vector2( 16, 20.5 ), Vector2( 16, 20.5 ), Vector2( 15, 25.5 ), Vector2( 15, 25.5 ), Vector2( 14.5, 27.5 ), Vector2( 14.5, 27.5 ), Vector2( 14.5, 28 ), Vector2( 14.5, 28 ), Vector2( 14.5, 28.5 ), Vector2( 14.5, 28.5 ), Vector2( 18.5, 16.5 ), Vector2( 18.5, 16.5 ), Vector2( 15, 16.5 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("colisao_jogador:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.09, 0.1, 0.19, 0.2, 0.29, 0.3, 0.39, 0.4, 0.49, 0.5, 0.59, 0.6, 0.69, 0.7, 0.89, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.5, 2 ), Vector2( -0.5, 2 ), Vector2( -5, 3 ), Vector2( -5, 3 ), Vector2( 1, 1.5 ), Vector2( 1, 1.5 ), Vector2( 1, -3.5 ), Vector2( 1, -3.5 ), Vector2( -4.5, -5.5 ), Vector2( -4.5, -5.5 ), Vector2( -7.5, -6 ), Vector2( -7.5, -6 ), Vector2( -8.5, -6.5 ), Vector2( -8.5, -6.5 ), Vector2( 16.5, 5.5 ), Vector2( 16.5, 5.5 ), Vector2( -3, 5.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("colisao_jogador:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -25, -12 ), Vector2( -11, -12 ), Vector2( -7, -17 ), Vector2( -21, -19 ), Vector2( -26, -23 ), Vector2( -26, -24 ), Vector2( -24, -24 ), Vector2( -7, 6 ), Vector2( -29, 5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hitbox_espada/colisao_espada:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox_espada/colisao_espada:shape:extents")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 32.099, 34.074 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hitbox_espada/colisao_espada:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -37.032, -13.04 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox/colisao_hurtbox:shape:extents")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.09, 0.1, 0.19, 0.2, 0.29, 0.3, 0.39, 0.4, 0.49, 0.5, 0.59, 0.6, 0.69, 0.7, 0.89, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13.5, 16.5 ), Vector2( 13.5, 16.5 ), Vector2( 16, 15.5 ), Vector2( 16, 15.5 ), Vector2( 16, 17 ), Vector2( 16, 17 ), Vector2( 15, 22 ), Vector2( 15, 22 ), Vector2( 14.5, 22 ), Vector2( 14.5, 22 ), Vector2( 14.5, 21.5 ), Vector2( 14.5, 21.5 ), Vector2( 14.5, 22 ), Vector2( 14.5, 22 ), Vector2( 18.5, 16.5 ), Vector2( 18.5, 16.5 ), Vector2( 15, 16.5 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hurtbox/colisao_hurtbox:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.09, 0.1, 0.19, 0.2, 0.29, 0.3, 0.39, 0.399684, 0.4, 0.49, 0.5, 0.59, 0.6, 0.69, 0.699729, 0.7, 0.89, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -1.5 ), Vector2( -1.5, -1.5 ), Vector2( -4, -0.5 ), Vector2( -4, -0.5 ), Vector2( 0, -2 ), Vector2( 0, -2 ), Vector2( 0, -7 ), Vector2( 0, -7 ), Vector2( 3.5, -11 ), Vector2( -5.5, -11 ), Vector2( -5.5, -11 ), Vector2( -8.5, -12.5 ), Vector2( -8.5, -12.5 ), Vector2( -9.5, -13 ), Vector2( -9.5, -13 ), Vector2( -17.5, 5.5 ), Vector2( 15.5, 5.5 ), Vector2( 15.5, 5.5 ), Vector2( -4, 5.5 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hitbox_espada/colisao_espada:shape")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 36 ) ]
+}
+
+[node name="Jogador" type="KinematicBody2D" groups=["jogador"]]
+position = Vector2( 0, -22 )
+collision_mask = 62
+script = ExtResource( 5 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 9.53674e-07, -2 )
+rotation = -3.14159
+emitting = false
+amount = 30
+lifetime = 0.6
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource( 45 )
+
+[node name="Particles2D2" type="Particles2D" parent="."]
+position = Vector2( 30, 13 )
+rotation = -1.5708
+emitting = false
+amount = 30
+explosiveness = 0.8
+randomness = 0.1
+process_material = SubResource( 46 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 1 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 4 )
+flip_h = true
+hframes = 6
+
+[node name="colisao_jogador" type="CollisionShape2D" parent="."]
+position = Vector2( 0.5, 2 )
+shape = SubResource( 2 )
+
+[node name="Hitbox_espada" type="Area2D" parent="." groups=["espada", "jogador"]]
+position = Vector2( 0.00534791, 0.703629 )
+scale = Vector2( 1.0125, 1.0125 )
+collision_layer = 32
+collision_mask = 66
+
+[node name="colisao_espada" type="CollisionShape2D" parent="Hitbox_espada"]
+modulate = Color( 0.223529, 0.988235, 0.0117647, 1 )
+position = Vector2( 26.1676, -2.17641 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 36 )
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["jogador"]]
+position = Vector2( 1, 0 )
+collision_layer = 64
+collision_mask = 32
+
+[node name="colisao_hurtbox" type="CollisionShape2D" parent="Hurtbox"]
+modulate = Color( 0, 0.0627451, 1, 1 )
+position = Vector2( -4.5, -4.5 )
+shape = SubResource( 35 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Parado"
+anims/Atacar1 = SubResource( 9 )
+anims/Atacar1_esquerda = SubResource( 28 )
+anims/Atacar2 = SubResource( 7 )
+anims/Atacar2_esquerda = SubResource( 29 )
+anims/Correr = SubResource( 5 )
+anims/Correr_esquerda = SubResource( 30 )
+anims/Dano = SubResource( 10 )
+anims/Dano2 = SubResource( 40 )
+anims/Habilidade1 = SubResource( 12 )
+anims/Habilidade1_Hinokami = SubResource( 47 )
+anims/Habilidade1_esquerda = SubResource( 31 )
+anims/Habilidade1_esquerda_Hinokami = SubResource( 48 )
+anims/Habilidade2 = SubResource( 13 )
+anims/Habilidade2_Hinokami = SubResource( 51 )
+anims/Habilidade2_esquerda = SubResource( 39 )
+anims/Habilidade2_esquerda_Hinokami = SubResource( 52 )
+anims/Habilidade3 = SubResource( 14 )
+anims/Habilidade3_Hinokami = SubResource( 49 )
+anims/Habilidade3_esquerda = SubResource( 33 )
+anims/Habilidade3_esquerda_Hinokami = SubResource( 50 )
+anims/Morto = SubResource( 11 )
+anims/Parado = SubResource( 3 )
+anims/Parado_esquerda = SubResource( 44 )
+anims/Pular = SubResource( 6 )
+anims/Pular_esquerda = SubResource( 24 )
+anims/RESET = SubResource( 8 )
+anims/Ultimate = SubResource( 15 )
+anims/Ultimate_esquerda = SubResource( 37 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 16, -56 )
+current = true
+limit_smoothed = true
+drag_margin_left = 0.3
+drag_margin_right = 0.3
+drag_margin_bottom = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 50, 0 )
+
+[node name="Som_ataque" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+volume_db = 9.893
+
+[node name="Som_ataque2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
+
+[node name="Som_agua" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+volume_db = -10.0
+
+[node name="Som_agua2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+
+[node name="Som_agua3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 14 )
+volume_db = -10.0
+
+[node name="Som_erro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 15 )
+volume_db = 1.0
+
+[node name="Som_hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 16 )
+
+[node name="Som_musica" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 17 )
+volume_db = -20.0
+autoplay = true
+
+[node name="Som_boss" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 18 )
+volume_db = -20.0
+
+[connection signal="body_entered" from="Hitbox_espada" to="." method="_on_Hitbox_espada_body_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/xDeviruchi-Decisive-Battle.mp3-d4c4c9e125e01f8b2db95b15dfbb45db.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Musica/xDeviruchi - 8-bit Fantasy  & Adventure Music (2021)/Mp3/xDeviruchi-Decisive-Battle.mp3"
+dest_files=[ "res://.import/xDeviruchi-Decisive-Battle.mp3-d4c4c9e125e01f8b2db95b15dfbb45db.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
