@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Success-and-Victory_Amended-Version.mp3-edddc7fafef3b33ff9476452b4d9aa12.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Musica/Success-and-Victory_Amended-Version.mp3"
+dest_files=[ "res://.import/Success-and-Victory_Amended-Version.mp3-edddc7fafef3b33ff9476452b4d9aa12.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

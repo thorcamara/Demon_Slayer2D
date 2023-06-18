@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=62 format=2]
+[gd_resource type="TileSet" load_steps=61 format=2]
 
 [ext_resource path="res://Assets/TileMap/Tiles/TilesNonSliced.png" type="Texture" id=1]
 [ext_resource path="res://Assets/TileMap/Cloud Tileset.png" type="Texture" id=2]
@@ -163,9 +163,6 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=52]
-points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
-
-[sub_resource type="ConvexPolygonShape2D" id=60]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=53]
@@ -1840,27 +1837,6 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 94/z_index = 0
-95/name = "Cloud Tileset.png 95"
-95/texture = ExtResource( 2 )
-95/tex_offset = Vector2( 0, 0 )
-95/modulate = Color( 1, 1, 1, 1 )
-95/region = Rect2( 16, 96, 16, 16 )
-95/tile_mode = 0
-95/occluder_offset = Vector2( 0, 0 )
-95/navigation_offset = Vector2( 0, 0 )
-95/shape_offset = Vector2( 0, 0 )
-95/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-95/shape = SubResource( 60 )
-95/shape_one_way = true
-95/shape_one_way_margin = 1.0
-95/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": true,
-"one_way_margin": 1.0,
-"shape": SubResource( 60 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-95/z_index = 0
 96/name = "Tile_94"
 96/texture = ExtResource( 2 )
 96/tex_offset = Vector2( 0, 0 )

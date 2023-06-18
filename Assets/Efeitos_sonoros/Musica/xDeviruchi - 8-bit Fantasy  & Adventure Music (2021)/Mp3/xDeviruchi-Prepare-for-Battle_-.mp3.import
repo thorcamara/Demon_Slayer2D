@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/xDeviruchi-Prepare-for-Battle_-.mp3-719d2c502316ad1aa75a1f9a0dab52ff.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Musica/xDeviruchi - 8-bit Fantasy  & Adventure Music (2021)/Mp3/xDeviruchi-Prepare-for-Battle_-.mp3"
+dest_files=[ "res://.import/xDeviruchi-Prepare-for-Battle_-.mp3-719d2c502316ad1aa75a1f9a0dab52ff.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -11,13 +11,13 @@ config_version=4
 [application]
 
 config/name="Demon Slayer"
-run/main_scene="res://Scenes/Intro.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://Telas/Intro.tscn"
+config/icon="res://Assets/Imagens/icon1.png"
 
 [autoload]
 
 Mundo="*res://Scripts/Mundo.gd"
-TransicaoCena="*res://Scenes/Transicao_cena.tscn"
+TransicaoCena="*res://Telas/Transicao_cena.tscn"
 
 [display]
 
@@ -98,6 +98,11 @@ v={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":86,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+t={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":84,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -108,6 +113,7 @@ v={
 2d_physics/layer_5="Armadilhas"
 2d_physics/layer_6="Hitboxes"
 2d_physics/layer_7="Hurtboxes"
+2d_physics/layer_8="Limites"
 
 [physics]
 

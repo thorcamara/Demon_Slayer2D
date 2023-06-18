@@ -1,0 +1,560 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Assets/Inimigos/Bringer-Of-Death/SpriteSheet/Bringer-of-Death-SpritSheet.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Portador_morte.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Efeitos_sonoros/Inimigos/ataque_boss02_1.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Efeitos_sonoros/Inimigos/boss02_aparecer.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Efeitos_sonoros/Inimigos/dano_boss02.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Efeitos_sonoros/Inimigos/morte_boss02.wav" type="AudioStream" id=6]
+
+[sub_resource type="Gradient" id=23]
+offsets = PoolRealArray( 0.0497925, 0.412698, 0.838174 )
+colors = PoolColorArray( 0.562121, 0.127411, 0.652344, 1, 0.238972, 0.136963, 0.730469, 1, 0.0224304, 0.0909984, 0.820313, 1 )
+
+[sub_resource type="GradientTexture" id=21]
+gradient = SubResource( 23 )
+
+[sub_resource type="Curve" id=24]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=22]
+curve = SubResource( 24 )
+
+[sub_resource type="ParticlesMaterial" id=25]
+flag_disable_z = true
+spread = 30.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 150.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -300.0
+scale = 2.0
+scale_curve = SubResource( 22 )
+color_ramp = SubResource( 21 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 11, 18 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "Aparecer"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Atacar"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "hit"
+}, {
+"args": [  ],
+"method": "fim_do_hit"
+}, {
+"args": [  ],
+"method": "correr"
+} ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("Som_ataque")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.482802,
+"start_offset": 0.3,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0.3 )
+}
+
+[sub_resource type="Animation" id=26]
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 39, 40, 41, 42, 43, 44, 45, 46, 47 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "correr"
+} ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Correr"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Dano"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 26, 27, 28 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "correr"
+} ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Morte"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 29, 30, 31, 32, 33, 34, 35, 36, 37, 38 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 8 ]
+}
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 11, 14.25 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 20, 14 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 28, 27.5 )
+
+[node name="Portador_morte" type="KinematicBody2D" groups=["inimigos"]]
+scale = Vector2( 2, 2 )
+collision_layer = 2
+collision_mask = 9
+script = ExtResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 6.5, -20.5 )
+emitting = false
+amount = 12
+lifetime = 0.5
+explosiveness = 0.8
+randomness = 0.1
+process_material = SubResource( 25 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -23.5, -29.5 )
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -18 )
+shape = SubResource( 11 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Aparecer = SubResource( 12 )
+anims/Atacar = SubResource( 13 )
+anims/Castar_feitico = SubResource( 26 )
+anims/Correr = SubResource( 14 )
+anims/Dano = SubResource( 15 )
+anims/Morte = SubResource( 16 )
+anims/RESET = SubResource( 17 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 0, -22 )
+enabled = true
+cast_to = Vector2( -20, 0 )
+collision_mask = 8
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2( -10.5, -0.5 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 8
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["inimigos"]]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+modulate = Color( 0, 1, 0.321569, 1 )
+position = Vector2( 0, -21.75 )
+shape = SubResource( 18 )
+
+[node name="Detector_jogador" type="Area2D" parent="."]
+position = Vector2( 24, -19 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector_jogador"]
+modulate = Color( 0.00784314, 0.109804, 0.941176, 1 )
+position = Vector2( -33, -4 )
+shape = SubResource( 19 )
+
+[node name="Detector_ataque" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector_ataque"]
+position = Vector2( -17, -27.5 )
+shape = SubResource( 20 )
+
+[node name="Cooldown_feitico" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Som_ataque" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Som_aparecer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Som_dano" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Som_morte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="body_entered" from="Detector_jogador" to="." method="_on_Detector_jogador_body_entered"]
+[connection signal="body_entered" from="Detector_ataque" to="." method="_on_Detector_ataque_body_entered"]
+[connection signal="timeout" from="Cooldown_feitico" to="." method="_on_Cooldown_feitico_timeout"]

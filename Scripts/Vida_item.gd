@@ -13,8 +13,8 @@ func _physics_process(delta: float):
 	
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("jogador"):
-		Mundo.vida_jogador += 30
-		body.vida += 30
+		Mundo.vida_jogador += 50
+		body.vida += 50
 		$Som_vida.play()
 		hide()
 		$CollisionShape2D.set_deferred("disabled", true)

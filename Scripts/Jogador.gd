@@ -5,23 +5,40 @@ const projetil_habilidade3_instancia = preload("res://Projeteis/Projetil_habilid
 const projetil_habilidade1_hinokami_instancia = preload("res://Projeteis/Projetil_habilidade1_hinokami.tscn")
 const projetil_habilidade3_hinokami_instancia = preload("res://Projeteis/Projetil_habilidade3_hinokami.tscn")
 
+# Variaves de movimento
 var cima = Vector2.UP
 var movimento = Vector2.ZERO
 var velocidade_movimento = 900
 var gravidade = 1200
 var forca_pulo = -520
 
-var vida = 100.0
-var vida_maxima = 100.0
-var regen_vida = 1.0
+# Variaveis de vida
+var vida = 200.0
+var vida_maxima = 200.0
+var regen_vida = 2.0
 
+# Variaveis de energia
 var energia = 100.0
 var energia_maxima = 100.0
 var regen_energia = 2.0
 
+# Variaveis de habilidades
 var hinokami = 0.0
 var hinokami_maxima = 100.0
 
+var cooldown_hab1 = 4.0
+var habilidade1_cooldown_pronto = true
+
+var cooldown_hab2 = 5.0
+var habilidade2_cooldown_pronto = true
+
+var cooldown_hab3 = 6.0
+var habilidade3_cooldown_pronto = true
+
+var cooldown_ultimate = 12.0
+var ultimate_cooldown_pronto = true
+
+# Variaveis de estado
 signal mudar_status_jogador
 
 var estado
@@ -36,6 +53,9 @@ var habilidade3 = false
 var ultimate = false
 var nadando = false
 var no_chao = true
+var morto = false
+
+signal jogador_morto
 
 var hinokami_ativado = false
 
@@ -43,57 +63,68 @@ var realizando_ataque = false
 
 var segurando_tecla = false
 
+# Variaveis de knockback
 var direcao_knockback = 1
-var intensidade_knockback = 3000
+var intensidade_knockback = 6000
 
+# Variaveis de dano
 var quantidade_dano = 10
 
 func _ready():
-	$Som_musica.play()
 	$Hitbox_espada/colisao_espada.set_deferred("disabled", true)
+	$colisao_jogador.set_deferred("disabled", false)
+	$Hurtbox.monitoring = true
 	Mundo.vida_jogador = vida
+	Mundo.vida_maxima_jogador = vida_maxima
 	Mundo.energia_jogador = energia
 	Mundo.hinokami_jogador = hinokami
+	Mundo.hinokami_ativado = false
+	Mundo.habilidade1_cooldown_pronto = true
+	Mundo.habilidade2_cooldown_pronto = true
+	Mundo.habilidade3_cooldown_pronto = true
+	Mundo.ultimate_cooldown_pronto = true
 	emit_signal("mudar_status_jogador", self)
-	
+
 func _process(delta: float):
-	var nova_energia = min(energia + regen_energia * delta, energia_maxima)
-	if nova_energia != energia:
-		energia = nova_energia
-		Mundo.energia_jogador = round(nova_energia)
-		emit_signal("mudar_status_jogador", self)
+	atualizar_barra_vida(delta)
+	atualizar_barra_energia(delta)
 	
-	var nova_vida = min(vida + regen_vida * delta, vida_maxima)
-	if nova_vida != vida:
-		vida = nova_vida
-		Mundo.vida_jogador = round(nova_vida)
-		emit_signal("mudar_status_jogador", self)
-		
 	if Mundo.vida_jogador <= 0:
 		Mundo.vida_jogador = 0
-		
+	
+	if vida <= 0:
+		vida = 0
+	
 	if Mundo.hinokami_jogador >= 100:
 		Mundo.hinokami_jogador = 100
-		
+	
+	if hinokami >= 100:
+		hinokami = 100
+	
 	if vida <= 0 or Mundo.vida_jogador <= 0:
+		morto = true
+		#if nadando == false:
+		realizando_ataque = true
+		$Hitbox_espada.monitoring = false
+		$Hurtbox.monitoring = false
+		emit_signal("jogador_morto")
+		yield(get_tree().create_timer(1.5), "timeout")
 		get_tree().reload_current_scene()
-		
+	
 	if Input.is_action_just_pressed("p"):
 		get_tree().reload_current_scene()
-		
-		
-	
+
 func _physics_process(delta: float):
+	#set_process_input(false)
 	movimento.y += gravidade * delta
 	movimento.x = 0
 	
-	if realizando_ataque:
-		return
+	if nadando == true: 
+		gravidade = 400
+	else:
+		gravidade = 1200
 	
-	if !is_on_floor():
-		segurando_tecla = true
-	
-	if !sofreu_dano:
+	if !sofreu_dano and realizando_ataque == false and morto == false:
 		_get_entrada()
 	
 	if movimento.x == 0:
@@ -107,15 +138,15 @@ func _physics_process(delta: float):
 	
 	plataforma_boss()
 	
+
 func _get_entrada():
 	movimento.x = 0
 	var direcao_movimento = int(Input.is_action_pressed("d")) - int(Input.is_action_pressed("a"))
 	movimento.x = lerp(movimento.x,  velocidade_movimento * direcao_movimento, 0.2)
-		
+
 	if direcao_movimento < 0:
 		$Sprite.flip_h = true
 		olhando_para_direita = false
-#		$Particles2D2.scale.x = -$Particles2D2.scale.x
 		$Particles2D2.position.x = -30
 		if sign($Position2D.position.x) == 1:
 			$Position2D.position.x *= -1
@@ -125,55 +156,48 @@ func _get_entrada():
 		$Particles2D2.position.x = 30
 		if sign($Position2D.position.x) == -1: 
 			$Position2D.position.x *= -1
-		
-		
-		
-	if Input.is_action_pressed("a"):
-		realizando_ataque = false
-		segurando_tecla = true
-	
-	if Input.is_action_just_released("a"):
-		segurando_tecla = false
-	
-	if Input.is_action_pressed("d"):
-		realizando_ataque = false
-		segurando_tecla = true
-	
-	if Input.is_action_just_released("d"):
-		segurando_tecla = false
-		
+
 	if Input.is_action_pressed("espaco") && is_on_floor():
 		realizando_ataque = false
-		segurando_tecla = true
+		$Som_jump.play()
 		movimento.y = forca_pulo
-		
-	if Input.is_action_just_released("espaco") && is_on_floor():
-		segurando_tecla = false
-		movimento.y = forca_pulo
-		
-		
+
+	if Input.is_action_pressed("espaco") && nadando == true:
+		realizando_ataque = false
+		movimento.y = -100
+
 	if Input.is_action_just_pressed("mouse1"):
 		if not segurando_tecla:
+			Mundo.ataque1_cooldown_pronto = false
+			$Cooldown_ataque1.start()
 			atacando1 = true
 			realizando_ataque = true
 			$Som_ataque.play()
+			if nadando == true:
+				set_physics_process(false)
 			yield($AnimationPlayer, "animation_finished")
+			if nadando == true:
+				set_physics_process(true)
 			realizando_ataque = false
 			atacando1 = false
-		
-	if Input.is_action_just_pressed("mouse2"):
+
+	if Input.is_action_just_pressed("mouse2") && is_on_floor():
 		if not segurando_tecla:
+			Mundo.ataque2_cooldown_pronto = false
+			$Cooldown_ataque2.start()
 			atacando2 = true
 			realizando_ataque = true
 			$Som_ataque2.play()
 			yield($AnimationPlayer, "animation_finished")
 			realizando_ataque = false
 			atacando2 = false
-		
-	if Input.is_action_just_pressed("q"):
-		if not segurando_tecla and energia > 15:
-			energia = energia - 15
-			Mundo.energia_jogador -= 15
+
+	if Input.is_action_just_pressed("q") && is_on_floor() and Mundo.habilidade1_cooldown_pronto == true:
+		if not segurando_tecla and energia > 8:
+			Mundo.habilidade1_cooldown_pronto = false
+			$Cooldown_hab1.start()
+			energia = energia - 8
+			Mundo.energia_jogador -= 8
 			emit_signal("mudar_status_jogador", self)
 			habilidade1 = true
 			realizando_ataque = true
@@ -183,28 +207,37 @@ func _get_entrada():
 			habilidade1 = false
 		else:
 			$Som_erro.play()
-		
-	if Input.is_action_just_pressed("w"):
-		
-		if not segurando_tecla and energia > 30:
-			energia = energia - 30
-			Mundo.energia_jogador -= 30
+
+	if Input.is_action_just_pressed("w") and Mundo.habilidade2_cooldown_pronto == true:
+		if not segurando_tecla and energia > 15:
+			Mundo.habilidade2_cooldown_pronto = false
+			$Cooldown_hab2.start()
+			energia = energia - 15
+			Mundo.energia_jogador -= 15
 			emit_signal("mudar_status_jogador", self)
 			habilidade2 = true
 			realizando_ataque = true
 			$Som_agua.play()
 			$Particles2D.emitting = true
+			if nadando == true:
+				set_physics_process(false)
 			yield($AnimationPlayer, "animation_finished")
+			if nadando == true:
+				set_physics_process(true)
+			Input.set_deferred("disabled", false)
+			realizando_ataque = false
 			$Particles2D.emitting = false
 			realizando_ataque = false
 			habilidade2 = false
 		else:
 			$Som_erro.play()
-		
-	if Input.is_action_just_pressed("e"):
-		if not segurando_tecla and energia > 50:
-			energia = energia - 50
-			Mundo.energia_jogador -= 50
+
+	if Input.is_action_just_pressed("e") && is_on_floor() and Mundo.habilidade3_cooldown_pronto == true:
+		if not segurando_tecla and energia > 25:
+			Mundo.habilidade3_cooldown_pronto = false
+			$Cooldown_hab3.start()
+			energia = energia - 25
+			Mundo.energia_jogador -= 25
 			emit_signal("mudar_status_jogador", self)
 			habilidade3 = true
 			realizando_ataque = true
@@ -214,17 +247,23 @@ func _get_entrada():
 			habilidade3 = false
 		else:
 			$Som_erro.play()
-		
-	if Input.is_action_just_pressed("r"):
-		if not segurando_tecla and energia > 80:
-			energia = energia - 80
-			Mundo.energia_jogador -= 80
+
+	if Input.is_action_just_pressed("r") and Mundo.ultimate_cooldown_pronto == true:
+		if not segurando_tecla and energia > 40:
+			Mundo.ultimate_cooldown_pronto = false
+			$Cooldown_ultimate.start()
+			energia = energia - 40
+			Mundo.energia_jogador -= 40
 			emit_signal("mudar_status_jogador", self)
 			ultimate = true
 			realizando_ataque = true
 			yield(get_tree().create_timer(0.7), "timeout")
 			$Som_agua.play()
+			if nadando == true:
+				set_physics_process(false)
 			yield($AnimationPlayer, "animation_finished")
+			if nadando == true:
+				set_physics_process(true)
 			$Particles2D2.emitting = true
 			yield(get_tree().create_timer(0.5), "timeout")
 			$Particles2D2.emitting = false
@@ -232,49 +271,62 @@ func _get_entrada():
 			ultimate = false
 		else:
 			$Som_erro.play()
-			
+
 	if Input.is_action_just_pressed("v"):
 		if hinokami == 100 and Mundo.hinokami_jogador == 100 and hinokami_ativado == false:
 			hinokami_ativado = true
-			print("Hinokami", hinokami_ativado)
+			vida_maxima = 400.0
+			vida = 400.0
+			Mundo.hinokami_ativado = true
+			Mundo.vida_jogador = 400
+			Mundo.vida_maxima_jogador = 400
+			emit_signal("mudar_status_jogador", self)
 			hinokami_subtrair()
 			yield(get_tree().create_timer(10), "timeout")
 			hinokami_ativado = false
-			print("Hinokami", hinokami_ativado)
+			Mundo.hinokami_ativado = false
+			vida_maxima = 200.0
+			vida = 200.0
+			Mundo.vida_jogador = 200
+			Mundo.vida_maxima_jogador = 200
+			emit_signal("mudar_status_jogador", self)
 		else:
 			hinokami_ativado == false
+			Mundo.hinokami_ativado = false
 			$Som_erro.play()
-		
+
 func hinokami_subtrair():
 	while hinokami != 0 and Mundo.hinokami_jogador != 0:
 		hinokami -= 10
 		Mundo.hinokami_jogador -= 10
 		emit_signal("mudar_status_jogador", self)
 		yield(get_tree().create_timer(1), "timeout")
-		
+
 func _set_animation():
 	estado = "Parado"
 	
 	if movimento.x == 0 and olhando_para_direita == false and sofreu_dano == false:
 		estado = "Parado_esquerda"
-	if !is_on_floor() and olhando_para_direita == true and sofreu_dano == false:
+	if !is_on_floor() and olhando_para_direita == true and sofreu_dano == false and atacando1 == false and habilidade2 == false and ultimate == false and nadando == false:
 		estado = "Pular"
-	elif !is_on_floor() and olhando_para_direita == false and sofreu_dano == false:
+	elif !is_on_floor() and olhando_para_direita == false and sofreu_dano == false and atacando1 == false and habilidade2 == false and ultimate == false and nadando == false:
 		estado = "Pular_esquerda"
-	elif movimento.x != 0 and olhando_para_direita == true and sofreu_dano == false:
+	elif movimento.x != 0 and olhando_para_direita == true and sofreu_dano == false and atacando1 == false and habilidade2 == false and ultimate == false and nadando == false:
 		estado = "Correr"
-	elif movimento.x != 0 and olhando_para_direita == false and sofreu_dano == false:
+	elif movimento.x != 0 and olhando_para_direita == false and sofreu_dano == false and atacando1 == false and habilidade2 == false and ultimate == false and nadando == false:
 		estado = "Correr_esquerda"
 	elif atacando1 and olhando_para_direita == true and sofreu_dano == false:
 		estado = "Atacar1"
 	elif atacando1 and olhando_para_direita == false and sofreu_dano == false:
 		estado = "Atacar1_esquerda"
-	elif atacando2 and olhando_para_direita == true and sofreu_dano == false:
+	elif atacando2 and olhando_para_direita == true and sofreu_dano == false and is_on_floor():
 		estado = "Atacar2"
-	elif atacando2 and olhando_para_direita == false and sofreu_dano == false:
+	elif atacando2 and olhando_para_direita == false and sofreu_dano == false and is_on_floor():
 		estado = "Atacar2_esquerda"
-	elif sofreu_dano == true:
+	elif sofreu_dano == true and olhando_para_direita == true:
 		estado = "Dano2"
+	elif sofreu_dano == true and olhando_para_direita == false:
+		estado = "Dano2_esquerda"
 	elif habilidade1 and olhando_para_direita == true and sofreu_dano == false and hinokami_ativado == false:
 		estado = "Habilidade1"
 	elif habilidade1 and olhando_para_direita == false and sofreu_dano == false and hinokami_ativado == false:
@@ -303,15 +355,24 @@ func _set_animation():
 		estado = "Ultimate"
 	elif ultimate == true and olhando_para_direita == false and sofreu_dano == false and hinokami_ativado == false:
 		estado = "Ultimate_esquerda"
-	elif !is_on_floor() and nadando == true and olhando_para_direita == true and sofreu_dano == false:
+	elif ultimate == true and olhando_para_direita == true and sofreu_dano == false and hinokami_ativado == true:
+		estado = "Ultimate_Hinokami"
+	elif ultimate == true and olhando_para_direita == false and sofreu_dano == false and hinokami_ativado == true:
+		estado = "Ultimate_esquerda_Hinokami"
+	elif !is_on_floor() and olhando_para_direita == true and sofreu_dano == false and nadando == false:
 		estado = "Pular"
-	elif !is_on_floor() and nadando == true and olhando_para_direita == false and sofreu_dano == false:
+	elif !is_on_floor() and olhando_para_direita == false and sofreu_dano == false and nadando == false:
 		estado = "Pular_esquerda"
-		
+	elif nadando == true and olhando_para_direita == true and morto == false:
+		estado = "Nadar"
+	elif nadando == true and olhando_para_direita == false and morto == false:
+		estado = "Nadar_esquerda"
+	elif morto == true:
+		estado = "Morto"
 
 	if $AnimationPlayer.assigned_animation != estado:
 		$AnimationPlayer.play(estado)
-		
+
 func knockback():
 	if olhando_para_direita == true:
 		direcao_knockback = -1
@@ -364,136 +425,265 @@ func _tiro_hab3_hinokami():
 	else:
 		projetil3_hinokami.set_direcao(-1)
 
-func _sofreu_dano(quantidade_dano):
-	if vida >= 0 or Mundo.vida_jogador >= 0:
+func sofreu_dano(quantidade_dano):
+	if (vida > 0 or Mundo.vida_jogador > 0) and morto == false:
 		$Som_hurt.play()
 		sofreu_dano = true
 		realizando_ataque = false
 		vida = vida - quantidade_dano
 		Mundo.vida_jogador = vida
 		emit_signal("mudar_status_jogador", self)
-		print("Vida Jogador ", vida)
-		print("Mundo ", Mundo.vida_jogador)
 		$Hurtbox.set_deferred("disabled", true)
 		yield(get_tree().create_timer(0.4), "timeout")
 		$Hurtbox.set_deferred("disabled", true)
 		sofreu_dano = false
-#	elif vida <= 0 or Mundo.vida_jogador <= 0:
-#		get_tree().reload_current_scene()
 
 func _on_Hurtbox_area_entered(area):
 	if area.is_in_group("inimigos"):
-		print("JOGADOR SOFREU DANO")
-#		_sofreu_dano()
-
+		pass
 
 func _on_Acionar_JogadorEntrou():
 	$Camera2D.current = false
-	$Som_musica.stop()
-	$Som_boss.play()
-
-func frameFreeze(escala_tempo, duracao):
-	Engine.time_scale = escala_tempo
-	yield(get_tree().create_timer(duracao * escala_tempo), "timeout")
-	Engine.time_scale = 1.0
 
 func plataforma_boss():
 	for plataformas in get_slide_count():
 		var colisao = get_slide_collision(plataformas)
 		if colisao.collider.has_method("colidir_com"):
 			colisao.collider.colidir_com(colisao, self)
-			
+
 func _on_Muzan_Muzan_morto():
 	$Camera2D.current = true
-	$Som_boss.stop()
-	$Som_musica.play()
-	
+
 func _on_Hitbox_espada_body_entered(body):
 	
 	
 	#Dano Normal sem Hinokami
 	
 	if body.is_in_group("inimigos") and atacando1 == true and hinokami_ativado == false:
-		body._sofreu_dano(30)
+		body.sofreu_dano(30)
 		if hinokami < 100:
-			hinokami += 50
-			Mundo.hinokami_jogador += 50
+			hinokami += 5
+			Mundo.hinokami_jogador += 5
 		emit_signal("mudar_status_jogador", self)
 	elif body.is_in_group("inimigos") and atacando2 == true and hinokami_ativado == false:
-		body._sofreu_dano(50)
+		body.sofreu_dano(50)
 		if hinokami < 100:
-			hinokami += 10
-			Mundo.hinokami_jogador += 10
+			hinokami += 5
+			Mundo.hinokami_jogador += 5
 		emit_signal("mudar_status_jogador", self)
 	elif body.is_in_group("inimigos") and habilidade2 == true and hinokami_ativado == false:
-		body._sofreu_dano(60)
+		body.sofreu_dano(60)
 		if hinokami < 100:
-			hinokami += 10
-			Mundo.hinokami_jogador += 10
+			hinokami += 5
+			Mundo.hinokami_jogador += 5
 		emit_signal("mudar_status_jogador", self)
 	elif body.is_in_group("inimigos") and ultimate == true and hinokami_ativado == false:
-		body._sofreu_dano(200)
+		body.sofreu_dano(200)
 		if hinokami < 100:
-			hinokami += 10
-			Mundo.hinokami_jogador += 10
+			hinokami += 5
+			Mundo.hinokami_jogador += 5
 		emit_signal("mudar_status_jogador", self)
 	
 	#Dano Normal com Hinokami
 	elif body.is_in_group("inimigos") and atacando1 == true and hinokami_ativado == true:
-		body._sofreu_dano(60)
+		body.sofreu_dano(60)
 		emit_signal("mudar_status_jogador", self)
 	elif body.is_in_group("inimigos") and atacando2 == true and hinokami_ativado == true:
-		body._sofreu_dano(100)
+		body.sofreu_dano(100)
 		emit_signal("mudar_status_jogador", self)
 	elif body.is_in_group("inimigos") and habilidade2 == true and hinokami_ativado == true:
-		body._sofreu_dano(120)
+		body.sofreu_dano(120)
 		emit_signal("mudar_status_jogador", self)
 	elif body.is_in_group("inimigos") and ultimate == true and hinokami_ativado == true:
-		body._sofreu_dano(400)
+		body.sofreu_dano(400)
 		emit_signal("mudar_status_jogador", self)
 		
 		
-	# Dano para o muzan sem Hinokami
+	# Dano para o muzan sem Hinokami e modo normal
 	
 	
-	elif atacando1 == true and body.is_in_group("muzan") and hinokami_ativado == false:
-		body._sofreu_dano(25, 0.2)
+	elif atacando1 == true and body.is_in_group("muzan") and hinokami_ativado == false and Mundo.muzan_normal == true:
+		body.sofreu_dano(30)
 		if hinokami < 100:
 			hinokami += 10
 			Mundo.hinokami_jogador += 10
 		emit_signal("mudar_status_jogador", self)
-	elif atacando2 == true and body.is_in_group("muzan") and hinokami_ativado == false:
-		body._sofreu_dano(50, 0.8)
+	elif atacando2 == true and body.is_in_group("muzan") and hinokami_ativado == false and Mundo.muzan_normal == true:
+		body.sofreu_dano(50)
 		if hinokami < 100:
 			hinokami += 10
 			Mundo.hinokami_jogador += 10
 		emit_signal("mudar_status_jogador", self)
-	elif habilidade2 == true and body.is_in_group("muzan") and hinokami_ativado == false:
-		body._sofreu_dano(55, 0.6)
+	elif habilidade2 == true and body.is_in_group("muzan") and hinokami_ativado == false and Mundo.muzan_normal == true:
+		body.sofreu_dano(60)
 		if hinokami < 100:
 			hinokami += 10
 			Mundo.hinokami_jogador += 10
 		emit_signal("mudar_status_jogador", self)
-	elif ultimate == true and body.is_in_group("muzan") and hinokami_ativado == false:
-		body._sofreu_dano(180, 1)
+	elif ultimate == true and body.is_in_group("muzan") and hinokami_ativado == false and Mundo.muzan_normal == true:
+		body.sofreu_dano(200)
 		if hinokami < 100:
 			hinokami += 10
 			Mundo.hinokami_jogador += 10
 		emit_signal("mudar_status_jogador", self)
 		
 		
-	# Dano para o muzan com Hinokami
+	# Dano para o muzan sem Hinokami e modo oni
 	
 	
-	elif atacando1 == true and body.is_in_group("muzan") and hinokami_ativado == true:
-		body._sofreu_dano(50, 0.2)
+	elif atacando1 == true and body.is_in_group("muzan") and hinokami_ativado == false and Mundo.muzan_normal == false:
+		body.sofreu_dano(25)
+		if hinokami < 100:
+			hinokami += 10
+			Mundo.hinokami_jogador += 10
 		emit_signal("mudar_status_jogador", self)
-	elif atacando2 == true and body.is_in_group("muzan") and hinokami_ativado == true:
-		body._sofreu_dano(100, 0.8)
+	elif atacando2 == true and body.is_in_group("muzan") and hinokami_ativado == false and Mundo.muzan_normal == false:
+		body.sofreu_dano(50)
+		if hinokami < 100:
+			hinokami += 10
+			Mundo.hinokami_jogador += 10
 		emit_signal("mudar_status_jogador", self)
-	elif habilidade2 == true and body.is_in_group("muzan") and hinokami_ativado == true:
-		body._sofreu_dano(110, 0.6)
+	elif habilidade2 == true and body.is_in_group("muzan") and hinokami_ativado == false and Mundo.muzan_normal == false:
+		body.sofreu_dano(55)
+		if hinokami < 100:
+			hinokami += 10
+			Mundo.hinokami_jogador += 10
 		emit_signal("mudar_status_jogador", self)
-	elif ultimate == true and body.is_in_group("muzan") and hinokami_ativado == true:
-		body._sofreu_dano(360, 1)
+	elif ultimate == true and body.is_in_group("muzan") and hinokami_ativado == false and Mundo.muzan_normal == false:
+		body.sofreu_dano(180)
+		if hinokami < 100:
+			hinokami += 10
+			Mundo.hinokami_jogador += 10
+		emit_signal("mudar_status_jogador", self)
+		
+		
+	# Dano para o muzan com Hinokami e modo normal
+	
+	
+	elif atacando1 == true and body.is_in_group("muzan") and hinokami_ativado == true and Mundo.muzan_normal == true:
+		body.sofreu_dano(50)
+		emit_signal("mudar_status_jogador", self)
+	elif atacando2 == true and body.is_in_group("muzan") and hinokami_ativado == true and Mundo.muzan_normal == true:
+		body.sofreu_dano(100)
+		emit_signal("mudar_status_jogador", self)
+	elif habilidade2 == true and body.is_in_group("muzan") and hinokami_ativado == true and Mundo.muzan_normal == true:
+		body.sofreu_dano(110)
+		emit_signal("mudar_status_jogador", self)
+	elif ultimate == true and body.is_in_group("muzan") and hinokami_ativado == true and Mundo.muzan_normal == true:
+		body.sofreu_dano(360)
+		emit_signal("mudar_status_jogador", self)
+		
+		
+	# Dano para o muzan com Hinokami e modo oni
+	
+	
+	elif atacando1 == true and body.is_in_group("muzan") and hinokami_ativado == true and Mundo.muzan_normal == false:
+		body.sofreu_dano(40)
+		emit_signal("mudar_status_jogador", self)
+	elif atacando2 == true and body.is_in_group("muzan") and hinokami_ativado == true and Mundo.muzan_normal == false:
+		body.sofreu_dano(90)
+		emit_signal("mudar_status_jogador", self)
+	elif habilidade2 == true and body.is_in_group("muzan") and hinokami_ativado == true and Mundo.muzan_normal == false:
+		body.sofreu_dano(100)
+		emit_signal("mudar_status_jogador", self)
+	elif ultimate == true and body.is_in_group("muzan") and hinokami_ativado == true and Mundo.muzan_normal == false:
+		body.sofreu_dano(320)
+		emit_signal("mudar_status_jogador", self)
+
+func _on_Cooldown_ataque1_timeout():
+	Mundo.ataque1_cooldown_pronto = true
+
+func _on_Cooldown_ataque2_timeout():
+	Mundo.ataque2_cooldown_pronto = true
+
+func _on_Cooldown_hab1_timeout():
+	Mundo.habilidade1_cooldown_pronto = true
+
+func _on_Cooldown_hab2_timeout():
+	Mundo.habilidade2_cooldown_pronto = true
+
+func _on_Cooldown_hab3_timeout():
+	Mundo.habilidade3_cooldown_pronto = true
+
+func _on_Cooldown_ultimate_timeout():
+	Mundo.ultimate_cooldown_pronto = true
+
+func dentro_agua():
+	if nadando == true:
+		$Som_dive.play()
+		$Som_underwater.play()
+	elif nadando == false:
+		$Som_underwater.stop()
+
+func _on_Agua_body_entered(body):
+	if body.name == "Jogador":
+		nadando = true
+		dentro_agua()
+
+func _on_Agua_body_exited(body):
+	if body.name == "Jogador":
+		nadando = false
+		dentro_agua()
+
+func _on_Agua2_body_entered(body):
+	if body.name == "Jogador":
+		nadando = true
+		dentro_agua()
+
+func _on_Agua2_body_exited(body):
+	if body.name == "Jogador":
+		nadando = false
+		dentro_agua()
+
+func _on_Agua3_body_entered(body):
+	if body.name == "Jogador":
+		nadando = true
+		dentro_agua()
+
+func _on_Agua3_body_exited(body):
+	if body.name == "Jogador":
+		nadando = false
+		dentro_agua()
+
+func _on_Guerreiro_trevas_Guerreiro_trevas_morto():
+	$Camera2D.current = true
+
+func _on_Agua4_body_entered(body):
+	if body.name == "Jogador":
+		nadando = true
+		dentro_agua()
+
+func _on_Agua4_body_exited(body):
+	if body.name == "Jogador":
+		nadando = false
+		dentro_agua()
+
+func _on_Agua5_body_entered(body):
+	if body.name == "Jogador":
+		nadando = true
+		dentro_agua()
+
+func _on_Agua5_body_exited(body):
+	if body.name == "Jogador":
+		nadando = false
+		dentro_agua()
+
+func _on_Acionar_02_JogadorEntrou():
+	$Camera2D.current = false
+
+func _on_Portador_morte_Portador_morte_morto():
+	$Camera2D.current = true
+
+func atualizar_barra_vida(delta: float):
+	var nova_vida = min(vida + regen_vida * delta, vida_maxima)
+	if nova_vida != vida && vida > 0 && !morto:
+		vida = nova_vida
+		Mundo.vida_jogador = round(nova_vida)
+		emit_signal("mudar_status_jogador", self)
+
+func atualizar_barra_energia(delta: float):
+	var nova_energia = min(energia + regen_energia * delta, energia_maxima)
+	if nova_energia != energia && energia > 0 && !morto:
+		energia = nova_energia
+		Mundo.energia_jogador = round(nova_energia)
 		emit_signal("mudar_status_jogador", self)

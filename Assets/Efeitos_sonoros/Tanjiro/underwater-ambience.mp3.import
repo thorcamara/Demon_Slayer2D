@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/underwater-ambience.mp3-cf341bae02415d6cdc79a20b60bdef2b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Tanjiro/underwater-ambience.mp3"
+dest_files=[ "res://.import/underwater-ambience.mp3-cf341bae02415d6cdc79a20b60bdef2b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

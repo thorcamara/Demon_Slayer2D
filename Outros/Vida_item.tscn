@@ -92,7 +92,7 @@ radius = 16.0
 
 [node name="Vida_item" type="KinematicBody2D"]
 collision_layer = 4
-collision_mask = 9
+collision_mask = 8
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -112,6 +112,7 @@ anims/Movimento = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 modulate = Color( 0.0862745, 0.0941176, 0.584314, 1 )

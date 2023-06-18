@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/xDeviruchi-Title-Theme-.mp3-16ec4cc6a9bdd12b707902ad7dba21af.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Musica/xDeviruchi - 8-bit Fantasy  & Adventure Music (2021)/Mp3/xDeviruchi-Title-Theme-.mp3"
+dest_files=[ "res://.import/xDeviruchi-Title-Theme-.mp3-16ec4cc6a9bdd12b707902ad7dba21af.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

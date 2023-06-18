@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ambient 1.mp3-051f71e09f2494b3d8d582866776585c.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Musica/alkakrab/mp3/Ambient 1.mp3"
+dest_files=[ "res://.import/Ambient 1.mp3-051f71e09f2494b3d8d582866776585c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

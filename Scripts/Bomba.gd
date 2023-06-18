@@ -40,7 +40,7 @@ func _on_Bomba_body_entered(body):
 		$AnimationPlayer.play("Colidiu")
 		$Som_bomba.play()
 		velocidade_projetil = 0
-		body._sofreu_dano(30)
+		body.sofreu_dano(30)
 		$CollisionShape2D.set_deferred("disabled", true)
 		yield($AnimationPlayer, "animation_finished")
 		queue_free()

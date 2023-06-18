@@ -1,0 +1,253 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Assets/PressStart2P.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Tela_controles.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Efeitos_sonoros/Interface/COLORALPHA 50 Menu Interface SFX/WAV/MI_SFX 02.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/HUD/Ui/Keys/A-Key.png" type="Texture" id=4]
+[ext_resource path="res://Assets/HUD/Ui/Keys/D-Key.png" type="Texture" id=5]
+[ext_resource path="res://Assets/HUD/Ui/Keys/Q-Key.png" type="Texture" id=6]
+[ext_resource path="res://Assets/HUD/Ui/Keys/W-Key.png" type="Texture" id=7]
+[ext_resource path="res://Assets/HUD/Ui/Keys/E-Key.png" type="Texture" id=8]
+[ext_resource path="res://Assets/HUD/Ui/Keys/R-Key.png" type="Texture" id=9]
+[ext_resource path="res://Assets/HUD/Ui/Keys/V-Key.png" type="Texture" id=10]
+[ext_resource path="res://Assets/HUD/Ui/Keys/Space-Key.png" type="Texture" id=11]
+[ext_resource path="res://Assets/HUD/Ui/Keys/Blank-Lg-Key.png" type="Texture" id=12]
+[ext_resource path="res://Assets/HUD/Ui/Keys/T-Key.png" type="Texture" id=13]
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxLine" id=3]
+color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 8
+font_data = ExtResource( 1 )
+
+[node name="Tela_controles" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
+[node name="Fundo" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 472.0
+margin_bottom = 248.0
+color = Color( 0, 0, 0, 0.588235 )
+
+[node name="Controles" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 164.0
+margin_top = 21.0
+margin_right = 308.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 8 )
+text = "Controles"
+align = 1
+valign = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Botao_retornar" type="Button" parent="CanvasLayer"]
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 102.0
+margin_bottom = 25.0
+custom_colors/font_color_disabled = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.780392, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.780392, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "Voltar"
+
+[node name="Teclas" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Teclas"]
+position = Vector2( 49, 73 )
+texture = ExtResource( 4 )
+hframes = 2
+
+[node name="Sprite2" type="Sprite" parent="Teclas"]
+position = Vector2( 49, 112 )
+texture = ExtResource( 5 )
+hframes = 2
+
+[node name="Sprite3" type="Sprite" parent="Teclas"]
+position = Vector2( 49, 152 )
+texture = ExtResource( 6 )
+hframes = 2
+
+[node name="Sprite4" type="Sprite" parent="Teclas"]
+position = Vector2( 49, 192 )
+texture = ExtResource( 7 )
+hframes = 2
+
+[node name="Sprite5" type="Sprite" parent="Teclas"]
+position = Vector2( 49, 232 )
+texture = ExtResource( 8 )
+hframes = 2
+
+[node name="Sprite6" type="Sprite" parent="Teclas"]
+position = Vector2( 271, 193 )
+texture = ExtResource( 9 )
+hframes = 2
+
+[node name="Sprite7" type="Sprite" parent="Teclas"]
+position = Vector2( 271, 232 )
+texture = ExtResource( 10 )
+hframes = 2
+
+[node name="Sprite8" type="Sprite" parent="Teclas"]
+position = Vector2( 271, 73 )
+texture = ExtResource( 11 )
+hframes = 2
+
+[node name="Sprite9" type="Sprite" parent="Teclas"]
+position = Vector2( 271, 113 )
+texture = ExtResource( 12 )
+hframes = 2
+
+[node name="Sprite10" type="Sprite" parent="Teclas"]
+position = Vector2( 271, 152 )
+texture = ExtResource( 12 )
+hframes = 2
+
+[node name="Sprite11" type="Sprite" parent="Teclas"]
+position = Vector2( 401, 74 )
+texture = ExtResource( 13 )
+hframes = 2
+
+[node name="Info" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Info"]
+margin_left = 72.0
+margin_top = 69.0
+margin_right = 200.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 9 )
+text = "- Mover Esquerda"
+
+[node name="Label2" type="Label" parent="Info"]
+margin_left = 72.0
+margin_top = 109.0
+margin_right = 192.0
+margin_bottom = 117.0
+custom_fonts/font = SubResource( 9 )
+text = "- Mover Direita"
+
+[node name="Label3" type="Label" parent="Info"]
+margin_left = 72.0
+margin_top = 149.0
+margin_right = 184.0
+margin_bottom = 157.0
+custom_fonts/font = SubResource( 9 )
+text = "- Habilidade 1"
+
+[node name="Label4" type="Label" parent="Info"]
+margin_left = 72.0
+margin_top = 189.0
+margin_right = 184.0
+margin_bottom = 197.0
+custom_fonts/font = SubResource( 9 )
+text = "- Habilidade 2"
+
+[node name="Label5" type="Label" parent="Info"]
+margin_left = 72.0
+margin_top = 229.0
+margin_right = 184.0
+margin_bottom = 237.0
+custom_fonts/font = SubResource( 9 )
+text = "- Habilidade 3"
+
+[node name="Label6" type="Label" parent="Info"]
+margin_left = 296.0
+margin_top = 189.0
+margin_right = 376.0
+margin_bottom = 197.0
+custom_fonts/font = SubResource( 9 )
+text = "- Ultimate"
+
+[node name="Label7" type="Label" parent="Info"]
+margin_left = 296.0
+margin_top = 229.0
+margin_right = 432.0
+margin_bottom = 237.0
+custom_fonts/font = SubResource( 9 )
+text = "- Hinokami Kagura"
+
+[node name="Label8" type="Label" parent="Info"]
+margin_left = 311.0
+margin_top = 69.0
+margin_right = 368.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 9 )
+text = "- Pular"
+
+[node name="Label9" type="Label" parent="Info"]
+margin_left = 311.0
+margin_top = 109.0
+margin_right = 368.0
+margin_bottom = 117.0
+custom_fonts/font = SubResource( 9 )
+text = "- Ataque 1"
+
+[node name="Label10" type="Label" parent="Info"]
+margin_left = 311.0
+margin_top = 149.0
+margin_right = 391.0
+margin_bottom = 157.0
+custom_fonts/font = SubResource( 9 )
+text = "- Ataque 2"
+
+[node name="Label11" type="Label" parent="Info"]
+margin_left = 248.0
+margin_top = 109.0
+margin_right = 296.0
+margin_bottom = 117.0
+custom_fonts/font = SubResource( 9 )
+text = "Mouse1"
+
+[node name="Label12" type="Label" parent="Info"]
+margin_left = 248.0
+margin_top = 148.0
+margin_right = 296.0
+margin_bottom = 156.0
+custom_fonts/font = SubResource( 9 )
+text = "Mouse2"
+
+[node name="Label13" type="Label" parent="Info"]
+margin_left = 423.0
+margin_top = 69.0
+margin_right = 479.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 9 )
+text = "- Pause"
+
+[node name="Som_pressionou" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="pressed" from="CanvasLayer/Botao_retornar" to="." method="_on_Botao_retornar_pressed"]

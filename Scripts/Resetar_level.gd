@@ -5,6 +5,7 @@ var vida_1 = preload("res://Outros/Vida_item.tscn")
 func _ready():
 	yield(get_tree().create_timer(0.5), "timeout")
 	Mundo.moedas = 0
+	Mundo.level_01 = true
 
 func _enter_tree():
 	if Mundo.ultima_posicao_checkpoint:
@@ -13,11 +14,15 @@ func _enter_tree():
 
 func _on_Acionar_JogadorEntrou_Camera():
 	$Boss/BossCamera.current = true
+	$Som_musica.stop()
+	$Som_boss.play()
 
 
 func _on_Muzan_Muzan_morto():
 	$Boss/BossCamera.current = false
 	$Timer_spawn_vidas.stop()
+	$Som_musica.play()
+	$Som_boss.stop()
 
 
 func _on_Timer_spawn_vidas_timeout():
@@ -29,3 +34,7 @@ func _on_Timer_spawn_vidas_timeout():
 
 func _on_Acionar_JogadorEntrou():
 	$Timer_spawn_vidas.start()
+
+
+func _on_Chegada_Chegada_01():
+	$Som_musica.stop()

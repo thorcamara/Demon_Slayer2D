@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/xDeviruchi-Exploring-The-Unknown.mp3-85b34a18f8b7e853e37836e69e28f229.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Musica/xDeviruchi - 8-bit Fantasy  & Adventure Music (2021)/Mp3/xDeviruchi-Exploring-The-Unknown.mp3"
+dest_files=[ "res://.import/xDeviruchi-Exploring-The-Unknown.mp3-85b34a18f8b7e853e37836e69e28f229.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

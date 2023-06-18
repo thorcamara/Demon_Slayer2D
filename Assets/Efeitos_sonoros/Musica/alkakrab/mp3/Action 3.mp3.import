@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Action 3.mp3-749bc75a46b4a4196ded5744618cf96b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Musica/alkakrab/mp3/Action 3.mp3"
+dest_files=[ "res://.import/Action 3.mp3-749bc75a46b4a4196ded5744618cf96b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

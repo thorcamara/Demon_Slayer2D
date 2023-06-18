@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/crystal_mauler.png-35a0da97d6b3ae3b7dd5c2d961a09537.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Assets/Npc/Lively_NPCs_v3.0/sprite sheets/elementals/crystal_mauler.png"
+dest_files=[ "res://.import/crystal_mauler.png-35a0da97d6b3ae3b7dd5c2d961a09537.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

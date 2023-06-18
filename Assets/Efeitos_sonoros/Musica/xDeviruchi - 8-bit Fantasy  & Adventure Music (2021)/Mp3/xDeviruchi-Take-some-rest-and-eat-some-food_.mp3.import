@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/xDeviruchi-Take-some-rest-and-eat-some-food_.mp3-b70de4fd61d03d966cc316a10cf84370.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Musica/xDeviruchi - 8-bit Fantasy  & Adventure Music (2021)/Mp3/xDeviruchi-Take-some-rest-and-eat-some-food_.mp3"
+dest_files=[ "res://.import/xDeviruchi-Take-some-rest-and-eat-some-food_.mp3-b70de4fd61d03d966cc316a10cf84370.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

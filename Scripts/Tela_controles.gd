@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready():
-	$Botao_retornar.grab_focus()
+	pass
 
 
 func _on_Botao_retornar_pressed():
@@ -10,4 +10,4 @@ func _on_Botao_retornar_pressed():
 	yield(get_tree().create_timer(0.5), "timeout")
 	queue_free()
 #	Mundo.controle_desligado = false
-	get_tree().change_scene("res://Scenes/Tela_inicial.tscn")
+	get_tree().change_scene("res://Telas/Tela_inicial.tscn")

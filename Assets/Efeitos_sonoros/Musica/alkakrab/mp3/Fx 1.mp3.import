@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Fx 1.mp3-6b0d5f26c4364604a9997dd74f6d791c.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Musica/alkakrab/mp3/Fx 1.mp3"
+dest_files=[ "res://.import/Fx 1.mp3-6b0d5f26c4364604a9997dd74f6d791c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

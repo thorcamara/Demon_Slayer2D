@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Dark Ambient 4.mp3-387cf3ea6b9fb859136c63a8597fc116.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Musica/alkakrab/mp3/Dark Ambient 4.mp3"
+dest_files=[ "res://.import/Dark Ambient 4.mp3-387cf3ea6b9fb859136c63a8597fc116.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

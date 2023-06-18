@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ultimate-Victory-WST010901.mp3-f02d7a3d2a62d232db019d95e35d2077.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Musica/Ultimate-Victory-WST010901.mp3"
+dest_files=[ "res://.import/Ultimate-Victory-WST010901.mp3-f02d7a3d2a62d232db019d95e35d2077.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

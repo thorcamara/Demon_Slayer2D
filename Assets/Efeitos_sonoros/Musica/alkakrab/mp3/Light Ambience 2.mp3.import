@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Light Ambience 2.mp3-475e6a24e1140d0b19ff92529802fe5f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Musica/alkakrab/mp3/Light Ambience 2.mp3"
+dest_files=[ "res://.import/Light Ambience 2.mp3-475e6a24e1140d0b19ff92529802fe5f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

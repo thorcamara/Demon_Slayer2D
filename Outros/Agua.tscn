@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Agua.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=26]
+
+[sub_resource type="Gradient" id=23]
+offsets = PoolRealArray( 0.385892, 0.680498, 0.892116 )
+colors = PoolColorArray( 0.0779076, 0.337024, 0.76709, 1, 0.0524178, 0.647916, 0.958496, 1, 0.0693684, 0.657715, 0.652544, 1 )
+
+[sub_resource type="GradientTexture" id=21]
+gradient = SubResource( 23 )
+
+[sub_resource type="Curve" id=24]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=22]
+curve = SubResource( 24 )
+
+[sub_resource type="ParticlesMaterial" id=25]
+flag_disable_z = true
+spread = 30.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 150.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -40.0
+damping = 5.0
+scale = 3.0
+scale_curve = SubResource( 22 )
+color_ramp = SubResource( 21 )
+
+[node name="Agua" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -10 )
+shape = SubResource( 26 )
+
+[node name="Particles2D2" type="Particles2D" parent="."]
+position = Vector2( 0, -19 )
+rotation = -1.5708
+scale = Vector2( 0.2, 0.2 )
+emitting = false
+amount = 30
+explosiveness = 0.8
+randomness = 0.1
+process_material = SubResource( 25 )

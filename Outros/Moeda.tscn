@@ -108,6 +108,6 @@ anims/RESET = SubResource( 3 )
 
 [node name="Som_moeda" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-volume_db = -10.0
+volume_db = -5.0
 
 [connection signal="body_entered" from="." to="." method="_on_Moeda_body_entered"]

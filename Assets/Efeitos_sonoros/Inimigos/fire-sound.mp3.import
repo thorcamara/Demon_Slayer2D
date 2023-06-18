@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/fire-sound.mp3-5acb18796d45d57ded1b94ef33ab2d47.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Inimigos/fire-sound.mp3"
+dest_files=[ "res://.import/fire-sound.mp3-5acb18796d45d57ded1b94ef33ab2d47.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

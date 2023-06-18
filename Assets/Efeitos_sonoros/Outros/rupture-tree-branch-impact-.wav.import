@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rupture-tree-branch-impact-.wav-1ec71355b6b28d1f42509f6f152ea07d.sample"
+
+[deps]
+
+source_file="res://Assets/Efeitos_sonoros/Outros/rupture-tree-branch-impact-.wav"
+dest_files=[ "res://.import/rupture-tree-branch-impact-.wav-1ec71355b6b28d1f42509f6f152ea07d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

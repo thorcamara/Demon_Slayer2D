@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Assets/TileMap/709fe1b30884ece5c40e442d08f5211d.png" type="Texture" id=1]
+[ext_resource path="res://Assets/TileMap/Objects/Wisteria.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Checkpoint.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Efeitos_sonoros/Outros/arvore.wav" type="AudioStream" id=3]
 
@@ -56,5 +56,6 @@ shape = SubResource( 1 )
 
 [node name="Som_arvore" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+volume_db = -10.0
 
 [connection signal="body_entered" from="." to="." method="_on_Checkpoint_body_entered"]

@@ -1,10 +1,13 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Assets/Inimigos/Fire Worm/Sprites/Worm/Walk.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Inimigos/Fire Worm/Sprites/Worm/Attack.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Inimigos/Fire Worm/Sprites/Worm/Get Hit.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Inimigos/Fire Worm/Sprites/Worm/Death.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Minhoca_fogo.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Efeitos_sonoros/Inimigos/morte_minhoca.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Efeitos_sonoros/Outros/sharping-knives-.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Efeitos_sonoros/Inimigos/fireball.wav" type="AudioStream" id=8]
 
 [sub_resource type="Gradient" id=15]
 offsets = PoolRealArray( 0.0497925, 0.456432, 0.838174 )
@@ -32,7 +35,7 @@ scale_curve = SubResource( 14 )
 color_ramp = SubResource( 12 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 24.5, 16 )
+extents = Vector2( 12, 16 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Andar"
@@ -158,6 +161,20 @@ tracks/4/keys = {
 "method": "andar"
 } ]
 }
+tracks/5/type = "audio"
+tracks/5/path = NodePath("Som_bola_de_fogo")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.135943,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 1.1 )
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "Dano"
@@ -198,22 +215,10 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 0, 1, 2 ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ) ]
-}
 
 [sub_resource type="Animation" id=6]
 resource_name = "Morte"
-length = 0.8
+length = 2.04
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -303,7 +308,10 @@ tracks/3/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 24.5, 15.5 )
+extents = Vector2( 12, 15.5 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 12, 1.5 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 45, 10 )
@@ -334,7 +342,7 @@ texture = ExtResource( 1 )
 hframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3.5, -16 )
+position = Vector2( 9, -16 )
 shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -344,9 +352,6 @@ anims/Atacar = SubResource( 4 )
 anims/Dano = SubResource( 5 )
 anims/Morte = SubResource( 6 )
 anims/RESET = SubResource( 2 )
-
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 33, -10 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 20, -8 )
@@ -366,8 +371,15 @@ collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 modulate = Color( 0.407843, 1, 0.0784314, 1 )
-position = Vector2( -3.5, -15.5 )
+position = Vector2( 9, -15.5 )
 shape = SubResource( 7 )
+
+[node name="Espinhos" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Espinhos"]
+modulate = Color( 0.984314, 0.117647, 0.117647, 1 )
+position = Vector2( 9, -34.5 )
+shape = SubResource( 19 )
 
 [node name="Detector_jogador" type="Area2D" parent="."]
 collision_layer = 0
@@ -395,6 +407,22 @@ color = Color( 0.0470588, 0.509804, 0.109804, 1 )
 [node name="Som_dano" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource( 18 )
 
+[node name="Som_morte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = 20.0
+
+[node name="Som_espinhos" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = 10.0
+
+[node name="Som_bola_de_fogo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 33, -10 )
+
 [connection signal="mudar_status_minhoca" from="." to="." method="_on_Minhoca_fogo_mudar_status_minhoca"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="body_entered" from="Espinhos" to="." method="_on_Espinhos_body_entered"]
+[connection signal="body_exited" from="Espinhos" to="." method="_on_Espinhos_body_exited"]
 [connection signal="body_entered" from="Detector_jogador" to="." method="_on_Detector_jogador_body_entered"]
