@@ -5492,7 +5492,6 @@ texture = ExtResource( 37 )
 position = Vector2( 437, 24 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 126 )
-frame = 4
 playing = true
 
 [node name="Pontuacao_moeda" type="Label" parent="HUD/Jogador"]

@@ -56,6 +56,7 @@ func _process(delta: float):
 	"Ataque_Chicote_3_Oni_Direita", "Dano_Oni", "Dano_Oni_Direita", "Morte_Oni"]):
 		return
 		
+		
 	if morto == false and jogador:
 		direcao = (jogador.position - position).normalized()
 		if not is_on_floor():
@@ -79,9 +80,11 @@ func flipar():
 		movendo_para_esquerda = true
 
 func correr():
-	if modo_oni == false and ataque_escolhido != 0 and !sofreu_dano and vida > 0 and morto == false: 
+	if morto:
+		return
+	if modo_oni == false and !sofreu_dano: 
 		$AnimationPlayer.play("Correr")
-	elif modo_oni == true and !sofreu_dano and vida > 0: 
+	elif modo_oni == true and !sofreu_dano and morto == false: 
 		$AnimationPlayer.play("Correr_Oni")
 
 func hit():
@@ -129,7 +132,7 @@ func esta_dentro_alcance(body):
 				break
 			elif modo_oni == true:
 				_ataque_aleatorio_oni()
-				if !sofreu_dano:
+				if !sofreu_dano or morto == false:
 					if ataque_escolhido_oni == 1 and movendo_para_esquerda == true:
 						$AnimationPlayer.play("Ataque_1_Oni")
 					elif ataque_escolhido_oni == 1 and movendo_para_esquerda == false:
@@ -188,7 +191,7 @@ func set_animacao():
 				$AnimationPlayer.play("Correr")
 			elif movendo_para_esquerda == false:
 				$AnimationPlayer.play("Correr_Direita")
-	elif sofreu_dano == true and modo_oni == false:
+	elif sofreu_dano == true and modo_oni == false and morto == false:
 		$AnimationPlayer.play("Dano")
 		$AnimationPlayer.playback_speed = 0.5
 		yield(get_tree().create_timer(0.8), "timeout")
@@ -201,8 +204,11 @@ func set_animacao():
 				$AnimationPlayer.play("Correr_Oni")
 			elif movendo_para_esquerda == false:
 				$AnimationPlayer.play("Correr_Oni_Direita")
-	elif sofreu_dano == true and modo_oni == true:
-		$AnimationPlayer.play("Dano_Oni")
+	elif sofreu_dano == true and modo_oni == true and morto == false:
+		if movendo_para_esquerda:
+			$AnimationPlayer.play("Dano_Oni")
+		elif movendo_para_esquerda == false:
+			$AnimationPlayer.play("Dano_Oni_Direita")
 		$AnimationPlayer.playback_speed = 0.5
 		yield(get_tree().create_timer(0.8), "timeout")
 		$AnimationPlayer.playback_speed = 1
@@ -223,10 +229,21 @@ func morrer():
 	$Particles2D.emitting = false
 	$Detector_jogador.monitoring = false
 	$AnimationPlayer.clear_queue()
-	$AnimationPlayer.play("Morte_Oni")
+	$Detector_jogador.monitoring = false
+	if movendo_para_esquerda == true:
+		$AnimationPlayer.play("Morte_Oni")
+	elif movendo_para_esquerda == false:
+		$AnimationPlayer.play("Morte_Oni_Direita")
+	print("1")
+	print(morto)
 	$Som_oni.play()
+	print("2")
+	print(morto)
 	yield($AnimationPlayer, "animation_finished")
-	yield($Som_oni, "finished")
+	print("3")
+	print(morto)
+	#yield($Som_oni, "finished")
+	print("Muzan foi morto")
 	emit_signal("Muzan_morto")
 	set_process(false)
 	queue_free()
